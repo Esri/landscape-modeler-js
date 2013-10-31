@@ -1,13 +1,13 @@
-# Esri Weighted Overlay Modeler
+# Esri Landscape Modeler
 
-A JavaScript library for designing, running, and saving weighted overlay models using the [ArcGIS API for JavaScript](https://developers.arcgis.com/en/javascript/) and ArcGIS Server image services.
+A JavaScript web applicaiton for designing, running, and saving weighted overlay models using the [ArcGIS API for JavaScript](https://developers.arcgis.com/en/javascript/) and ArcGIS Server image services.
 
-[View it live](ec2-54-243-84-56.compute-1.amazonaws.com/landscape/modeler/)
+[View it live](http://landscapemodelerdev.arcgis.com/app/)
 
 <!-- TODO: add app screenshot -->
 <!--![App](https://raw.github.com/Esri/dojo-bootstrap-ui-for-maps-js/master/dojo-bootstrap-ui-for-maps-js.png)-->
 
-**Currently Esri Weighted Overlay Modeler is in development but is open to contributions. It should be thought of as a beta or preview.**
+**Currently Esri Landscape Modeler is in development but is open to contributions. It should be thought of as a beta or preview.**
 
 ## Features
 
@@ -15,8 +15,8 @@ TODO: add features
 
 ## Development Instructions
 
-1. `git clone https://github.com/Esri/weighted-overlay-modeler-js`
-2. `cd weighted-overlay-modeler-js`
+1. `git clone https://github.com/Esri/landscape-modeler-js`
+2. `cd landscape-modeler-js`
 3. `npm install` for Grunt/Karma
 
 TODO: add instructions for publishing image service and raster function template
@@ -70,5 +70,5 @@ limitations under the License.
 
 A copy of the license is available in the repository's [license.txt]( https://raw.github.com/Esri/esri-leaflet/master/license.txt) file.
 
-[](Esri Tags: ArcGIS Web Mapping Leaflet)
+[](Esri Tags: ArcGIS Web landscape Weighted-overlay raster analysis)
 [](Esri Language: JavaScript)
