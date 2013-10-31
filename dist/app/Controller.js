@@ -1,0 +1,8 @@
+/*!
+ *  landscape-modeler-js
+ *  @version 0.0.1
+ *  @author Tom Wayson <twayson@esri.com> (http://tomwayson.com)
+ *
+ *  A JavaScript web application for designing, running, and saving weighted overlay models using the Esri ArcGIS API for JavaScript and ArcGIS Server image services.
+ */
+define(["dojo/_base/declare","dojo/_base/lang","dojo/dom","dojo/dom-construct","dojo/topic","esri/map","esri/domUtils","esri/config","./MapControls","./ModelerPane","./FeatureLayerPane"],function(a,b,c,d,e,f,g,h,i,j,k){return a(null,{constructor:function(b){a.safeMixin(this,b)},init:function(a){var d=this;this.loadingNode=c.byId(a.loadingNode),h.defaults.io.proxyUrl=this.config.proxyUrl,this.map=new f(a.mapNode,b.mixin(this.config.mapOptions,{sliderPosition:"top-right"})),this.map.on("update-start",function(){d.showLoading()}),this.map.on("update-end",function(){d.hideLoading()}),this.map.on("layer-add-result",function(a){var b=a.error;b&&(b.name="LayerAddError",d.showError(a.error)),d.hideLoading()}),this.mapControls=new i({map:this.map},a.mapControlsNode),this.mapControls.startup(),this.modelerPane=new j({map:this.map,portalUser:this.portalUser,config:this.config},a.modelerNode),this.modelerPane.startup(),this.featureLayerPane=new k({map:this.map,config:this.config},a.featurePaneNode),this.featureLayerPane.startup(),this.featureLayerPane.on("layer-load-start",function(){d.showLoading()}),e.subscribe(this.config.topics.MODELER_SIGNOUT,function(){d.oAuthHelper.signOut()})},showLoading:function(){g.show(this.loadingNode)},hideLoading:function(){g.hide(this.loadingNode)},showError:function(a){window.alert(a.toString()),console.error(a)}})});

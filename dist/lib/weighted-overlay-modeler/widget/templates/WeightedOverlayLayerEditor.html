@@ -1,0 +1,20 @@
+<div>
+
+	<div class="layer-row">
+    	<div data-dojo-attach-point="layerNode" class="title">
+			<!--<button data-dojo-attach-point="classesButton" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_onClassesClick">Classes</button>-->
+            <i class="icon-chevron-right" data-dojo-attach-point="iconNode"></i>
+			<label data-dojo-attach-point="labelNode" class="${baseClass}-label"></label>
+        </div>
+        <div class="value">
+			<input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-point="weightNode" data-dojo-props="constraints: {max: 100, min: 0, round:0}, required:true, rangeMessage:'Value must be between 0 and 100'" data-dojo-attach-event="onChange:_onWeightChange,onKeyUp:_onWeightChange,onMouseUp:_onFocus,onBlur:_onBlur" class="${baseClass}-weight" /> &#37;
+        </div>
+    </div>
+
+    <div class="layer-ranges">
+		<div data-dojo-attach-point="remapRangesEditorWrapper">
+        	<div data-dojo-attach-point="remapRangesEditorContainer"></div>
+        </div>
+    </div>
+
+</div>

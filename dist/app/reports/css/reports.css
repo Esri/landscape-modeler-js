@@ -1,0 +1,167 @@
+/*#mdlrDashboardContainer {
+	bottom:2.5em;
+	left: 50%;
+}
+*/
+.mdlrChartsHeaderIcon-settings {
+	font-size: 12px;
+	height:auto;
+	width: auto;
+	margin-right: 5px;
+}
+
+.mdlrCharts {
+	border-top: 1px solid rgba(255, 255, 255, 0.25);
+	list-style: none;
+	padding: 5px 0 0;
+	margin: 0;
+	text-align: center;
+	/*background: #fff;*/
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+
+	.mdlrCharts li {
+		display: inline-block;
+		margin: 0 6px;
+		padding: 4px;
+		vertical-align: top;
+	}
+		/*.mdlrCharts li:not(.addNewChartButtonWrapper):hover {
+			background: none repeat scroll 0 0 rgba(100, 100, 100, 0.8);
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			border-radius: 4px 4px 4px 4px;
+			box-shadow: 0 0 1px rgba(0, 0, 0, 0.2) inset;
+		}*/
+
+		.mdlrCharts li.rootLevelChart {
+			margin: -5px 0 0;
+			padding: 9px 10px 4px 10px;
+			border-radius: 0;
+			background: rgba(0,0,0,0.2);
+			position: relative;
+		}
+		/*.mdlrCharts li.chartSeperator {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			width: 25px;
+			background: url("images/hollow-arrow.png") left center no-repeat;
+		}*/
+		.mdlrCharts li.rootLevelChart.lastChart {
+				margin-right:25px;
+			}
+
+		.mdlrCharts li.rootLevelChart.lastChart:after {
+				background: url("images/hollow-arrow.png") repeat scroll left center transparent;
+				content: "";
+				height: 100%;
+				position: absolute;
+				right: -19px;
+				top: 0;
+				width: 25px;
+			}
+		.mdlrCharts li h4 {
+			margin: 0 auto;
+			text-align: center;
+			color: #fff;
+			font-weight: normal;
+			max-width: 128px;
+			font-size: 12px;
+		}
+.chartContainer {
+	width: 127px;
+	height: 127px;
+	/*padding:15px;*/
+}
+
+.Pie .chartContainer svg,
+.Donut .chartContainer svg {
+		background: url("images/pie-background-small.png") 1px 1px no-repeat;
+	}
+
+/* to fake donut chart */
+.Donut .chartContainer {
+	position: relative
+}
+.Donut .chartContainer:after {
+    background: none repeat scroll 0 0 #555555;
+    border-radius: 100px 100px 100px 100px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4) inset;
+    content: "";
+    display: block;
+    height: 70px;
+    left: 50%;
+    margin: -35px 0 0 -35px;
+    position: absolute;
+    top: 50%;
+    width: 70px;
+}
+.donutDisplayedValue {
+	color: #FFFFFF;
+	display: block;
+	font-size: 18px;
+	left: 50%;
+	line-height: 18px;
+	margin-left: -30px;
+	margin-top: -9px;
+	position: absolute;
+	text-align: center;
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.37);
+	top: 50%;
+	width: 60px;
+	z-index: 101;
+}
+.addNewChartButtonWrapper {
+	vertical-align: middle;
+}
+.addNewChartButton {
+	background: url("images/add.png") center center no-repeat rgba(255,255,255,0.2);
+	border: 2px dashed #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	display: block;
+	height: 100px;
+	width: 100px;
+	margin: 10px 0 10px 10px;
+	cursor: pointer;
+	transition-property: background-color, opacity;
+	transition-duration: 0.2s;
+	opacity:0.645;
+	filter: alpha(opacity=70);
+}
+.addNewChartButton:hover,
+.addNewChartButton:active  {
+	background: rgba(255,255,255,0.4);
+	opacity:1;
+	filter: alpha(opacity=100);
+}
+
+	.addNewChartButton span {
+		display: none;
+	}
+	.addNewChartButton:hover span,
+	.addNewChartButton:active span {
+		display: block;
+		color: #fff;
+		font-size: 18px;
+		text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+		text-align:center;
+		opacity:1;
+		margin: 25px 0;
+	}
+
+/*tooltip for pie */
+.pieTooltip {
+	position: absolute;
+	z-index:300;
+	background: rgba(255,255,255,0.75);
+	cursor: default;
+	padding:5px;
+	border-radius: 4px;
+	min-width: 120px;
+}

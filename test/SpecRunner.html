@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Jasmine Spec Runner</title>
+
+  <!-- include Jasmine resources here -->
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-1.3.1/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.3.1/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine-1.3.1/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.3.1/jasmine-html.js"></script>
+
+  <!-- include esri/dojo resources here  -->
+  <link rel="stylesheet" href="//js.arcgis.com/3.6/js/dojo/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" href="//js.arcgis.com/3.6/js/esri/css/esri.css">
+  <script>
+    // configure dojo loader
+    (function(){
+      var path = location.pathname.replace(/\/[^/]+$/, '/');
+      window.dojoConfig = {
+        parseOnLoad: false,
+        async: true,
+        packages: [
+          {
+            name: "weighted-overlay-modeler",
+            location: path + 'src'
+          },
+          {
+            name: "spec",
+            location: path + 'spec'
+          }
+        ]
+      };
+    }());
+  </script>
+  <script src="//js.arcgis.com/3.6/"></script>
+
+  <!-- require spec modules and start up Jasmine here ... -->
+  <script type="text/javascript">
+    // require spec modules
+    require([
+      'spec/remapRangeUtilsSpec'
+      // TODO: add other specs here
+    ], function() {
+
+      // jasmine html reporter boilerplate
+      var jasmineEnv = jasmine.getEnv();
+      jasmineEnv.updateInterval = 1000;
+
+      var htmlReporter = new jasmine.HtmlReporter();
+
+      jasmineEnv.addReporter(htmlReporter);
+
+      jasmineEnv.specFilter = function(spec) {
+        return htmlReporter.specFilter(spec);
+      };
+
+      // run specs
+      jasmineEnv.execute();
+    });
+  </script>
+
+</head>
+
+<body>
+</body>
+</html>

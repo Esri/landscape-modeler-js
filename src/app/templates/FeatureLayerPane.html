@@ -1,0 +1,37 @@
+<div>
+  <div data-dojo-attach-point="overlayFeaturesTitlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Overlay Features', closable:true, open:false" class="${baseClass}TitlePane">
+    <div data-dojo-type="dijit/layout/ContentPane">
+      <div class="mdlrFeatureLayerButtons group">
+        <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_showCharts" data-dojo-attach-point="showChartsButtonNode" disabled>Charts</button>
+        <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_onLoadFeaturesClick">Load...</button>
+        <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_onRemoveFeaturesClick" data-dojo-attach-point="removeFeaturesButton" disabled>Remove</button>
+      </div>
+      <div class="mdlrFeatureLayerVisibility" style="display: none;">
+        <div>
+          <input data-dojo-attach-point="visibilityNode" type="checkbox" checked />
+          <strong data-dojo-attach-point="nameNode"></strong>
+        </div>
+        <div>
+          <label>Transparency</label>:
+          <span data-dojo-attach-point="transparencyNode" data-dojo-type="dijit/form/HorizontalSlider" data-dojo-props="value:.4,minimum:0,maximum:1,intermediateChanges:true,showButtons:false" class="modeler-transparency-slider"></span>
+        </div>
+      </div>
+      <div data-dojo-attach-point="legendNode" class="mdlrLegend"></div>
+      <div data-dojo-attach-point="templatePickerNode"></div>
+      <div data-dojo-attach-point="editorNode"></div>
+    </div>
+  </div>
+  <div data-dojo-attach-point="chartPaneNode"></div>
+  <div class="dijitHidden">
+    <div data-dojo-attach-point="loadDialog" data-dojo-type="dijit/Dialog" data-dojo-props="title: 'Load a Feature Layer', style: 'width: 600px'">
+      <div><label>Feature Service URL:</label></div>
+      <div><input type="text" required="true" data-dojo-attach-point="featureLayerUrlNode"
+      data-dojo-type="dijit/form/ValidationTextBox"
+      data-dojo-props="regExp: dojox.validate.regexp.url, invalidMessage:'Invalid URL.', style:'width:100%',  intermediateChanges: true" /></div>
+      <div class="dijitDialogPaneActionBar">
+        <button data-dojo-attach-point="loadButtonNode" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_onLoadClick" disabled>Load</button>
+        <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_onCancelClick">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

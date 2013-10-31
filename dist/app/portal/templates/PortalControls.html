@@ -1,0 +1,17 @@
+<div>
+  <div class="group">
+    <span data-dojo-attach-point="titleNode" class="${baseClass}Title left"></span>
+    <span class="${baseClass}Buttons right">
+      <button data-dojo-type="dijit/form/Button" data-dojo-attach-point="saveButton" data-dojo-props="disabled:true" title="Save this model">Save...</button>
+      <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_onLoadClick" title="Load a previously saved model">Load...</button>
+    <span>
+  </div>
+  <div class="dijitHidden">
+    <div data-dojo-attach-point="saveDialog" data-dojo-type="dijit/Dialog" data-dojo-props="title: 'Save Model', style: 'width: 400px'">
+      <div data-dojo-attach-point="saveModelNode"></div>
+    </div>
+    <div data-dojo-attach-point="loadDialog" data-dojo-type="dijit/Dialog" data-dojo-props="title: 'Load Model', style: 'width: 520px;height:330px'" >
+      <div data-dojo-attach-point="queryResultsNode" class="mdlrResultsGrid"></div>
+    </div>
+  </div>
+</div>

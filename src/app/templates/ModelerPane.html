@@ -1,0 +1,28 @@
+<div class="mdlrFloatingPane">
+  <div class="mdlrModelContainer">
+    <div class="group">
+      <div data-dojo-attach-point="appLinks" class="mdlrAppLinks right">Welcome <strong data-dojo-attach-point="userNameNode"></strong>!
+        | <a data-dojo-attach-point="helpLink" target="_blank">Help</a>
+        | <a data-dojo-attach-event="onclick:_onLogOutClick" href="#">Log out</a>
+      </div>
+      <h1 class="mdlrAppTitle left" data-dojo-attach-point="appTitleNode"></h1>
+    </div>
+    <div data-dojo-attach-point="portalControlsNode"></div>
+    <div>
+      <div data-dojo-attach-point="selectLayersViewNode">
+        <h3>Select Layers</h3>
+        <div data-dojo-attach-point="selectLayersNode"></div>
+        <div class="mdlrButtons group">
+          <button class="mdlrRight" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_onDesignModelButtonClick">Design Model &gt;</button>
+        </div>
+      </div>
+      <div data-dojo-attach-point="designModelViewNode" style="display:none">
+        <h3>Design Model</h3>
+        <div data-dojo-attach-point="designModelNode" class="mdlrScrollPanel"></div>
+        <div class="mdlrButtons">
+          <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_onSelectLayersButtonClick">&lt; Select Layers</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

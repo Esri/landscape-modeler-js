@@ -1,0 +1,9 @@
+<div>
+  <label for="category">Category:</label>
+  <select data-dojo-type="dijit/form/Select" data-dojo-attach-point="categoryNode" data-dojo-attach-event="onChange:_onCategoryChange" class="${baseClass}-category"></select>
+  <br>
+  <br>
+  <div data-dojo-attach-point="gridNode" class="${baseClass}-grid" style="width:500px; height: 200px;"></div>
+  <button data-dojo-attach-point="loadButton" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_onLoadClick">Load and Run selected Model</button>
+  <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_onCancelClick">Cancel</button>
+</div>
