@@ -6,14 +6,8 @@ function() {
 
     // oAuth
     oauthOptions: {
-      // dev - for amazon URLS
-      // appId: "NZUFAvsGghQBcKOk",
-      // dev/prod (once we have an arcgis.com URL for the app)
       appId: "landscapemodeler",
-      // dev:
       portal: "https://devext.arcgis.com",
-      // prod:
-      // portal:     "https://www.arcgis.com",
       expiration: (14 * 24 * 60), // 2 weeks, in minutes
       popup:      false
     },
@@ -51,7 +45,7 @@ function() {
     weightedOverlayService: {
       // image service that publishes all available raster layers
       // and the raster functions that operate on them
-      url: "http://landscapemodelerdev.arcgis.com/arcgis/rest/services/landscapeModeler/weightedOverlay/ImageServer",
+      url: "https://landscape3dev.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Weighted_Overlay/ImageServer",
       // options for initializing the model service
       options: {
         rasterFunctionName: "WeightedOverlay_7_1_9_colormap",

@@ -1,8 +1,8 @@
 /*!
  *  landscape-modeler-js
- *  @version 0.0.1
+ *  @version 0.1.0
  *  @author Tom Wayson <twayson@esri.com> (http://tomwayson.com)
  *
- *  A JavaScript web application for designing, running, and saving weighted overlay models using the Esri ArcGIS API for JavaScript and ArcGIS Server image services.
+ *  A web application for designing, running, and saving weighted overlay models using the Esri ArcGIS API for JavaScript and ArcGIS Server image services.
  */
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/on","dojo/_base/Color","dojo/dom-construct","dojo/dom-style","dijit/_WidgetBase","dijit/_TemplatedMixin","dijit/_WidgetsInTemplateMixin","dojo/text!./templates/Colormap.html","dojo/i18n!./nls/resources"],function(a,b,c,d,e,f,g,h,i,j,k,l){var m=a([h,i,j],{definition:null,showLabels:!0,i18n:l,templateString:k,_setDefinitionAttr:function(a){this.definition=a;var d=this.__colorsNode;d.innerHTML="",this.definition.colors&&c.forEach(this.definition.colors,b.hitch(this,function(a){this._addColor(d,a)}))},postCreate:function(){this.inherited(arguments),this.showLabels||(this.__lowNode.style.display="none",this.__highNode.style.display="none")},_addColor:function(a,b){var c=null,d=b.label,h=b.value;if(d&&(d=d.trim()),h&&(h=(""+h).trim()),d&&d.length>0&&h&&h.length>0){var i=this.i18n.colorRamp.tipPattern;i=i.replace("{label}",d),i=i.replace("{value}",h),c=i}else d&&d.length>0?c=d:h&&h.length>0&&(c=h);var j=new e(b.rgb),k=f.create("span",{className:"modeler-color-ramp-color"});g.set(k,"backgroundColor",j.toCss()),c&&c.length>0&&(k.title=c),a.appendChild(k)}});return m});

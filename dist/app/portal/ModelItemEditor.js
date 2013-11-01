@@ -1,8 +1,8 @@
 /*!
  *  landscape-modeler-js
- *  @version 0.0.1
+ *  @version 0.1.0
  *  @author Tom Wayson <twayson@esri.com> (http://tomwayson.com)
  *
- *  A JavaScript web application for designing, running, and saving weighted overlay models using the Esri ArcGIS API for JavaScript and ArcGIS Server image services.
+ *  A web application for designing, running, and saving weighted overlay models using the Esri ArcGIS API for JavaScript and ArcGIS Server image services.
  */
 define(["dojo/_base/declare","dojo/_base/array","dojo/Evented","dijit/_WidgetBase","dijit/_TemplatedMixin","dijit/_WidgetsInTemplateMixin","dojo/text!./templates/ModelItemEditor.html","dijit/form/Form","dijit/form/ValidationTextBox","dijit/form/SimpleTextarea","dijit/form/Button","dijit/form/Select"],function(a,b,c,d,e,f,g){return a([d,e,f,c],{templateString:g,baseClass:"mdlrModelItemEditor",_setItemInfoAttr:function(a){this.itemInfo=a,this.titleNode.set("value",this.itemInfo.title),this.descriptionNode.set("value",this.itemInfo.description),this.setSelectedCategory(this.itemInfo.tags)},getItemInfo:function(){return this.itemInfo},isValid:function(){return this.formNode.isValid()},populateCategories:function(a){this.categoryNode.set("options",a),this.categoryNode.options.length&&this.categoryNode.set("value",this.categoryNode.options[0].value)},setSelectedCategory:function(a){b.some(a,function(a){var c=b.some(this.categoryNode.options,function(b){return b.value===a});return c&&this.categoryNode.set("value",a),c},this)},_onTitleChange:function(){this.itemInfo.title=this.titleNode.value},_onDescriptionChange:function(){this.itemInfo.description=this.descriptionNode.value},_onCategoryChange:function(){this.itemInfo.tags=[this.categoryNode.value]},_onSaveClick:function(){this.formNode.validate()&&this.emit("Save",this.getItemInfo())},_onCancelClick:function(){this.emit("Cancel")}})});
