@@ -99,7 +99,7 @@ module.exports = function ( grunt ) {
                 {
                   expand: true,     // Enable dynamic expansion.
                   cwd: 'src',      // Src matches are relative to this path.
-                  src: ['**/*.html','**/*.css','**/images/*','**/img/*','proxy*','!tests/**'], // Actual pattern(s) to match.
+                  src: ['**/*.html','**/*.css','**/images/*','**/img/*','!tests/**'], // Actual pattern(s) to match.
                   dest: 'dist/'   // Destination path prefix.
                 }
               ]
@@ -110,7 +110,7 @@ module.exports = function ( grunt ) {
                 {
                   expand: true,     // Enable dynamic expansion.
                   cwd: 'src',      // Src matches are relative to this path.
-                  src: ['app/config.js'], // Actual pattern(s) to match.
+                  src: ['app/config.js','proxy*'], // Actual pattern(s) to match.
                   dest: 'dist/'   // Destination path prefix.
                 }
 
@@ -134,7 +134,7 @@ module.exports = function ( grunt ) {
                 {
                   expand: true,     // Enable dynamic expansion.
                   cwd: 'src',      // Src matches are relative to this path.
-                  src: ['app/config.africa'], // Actual pattern(s) to match.
+                  src: ['app/config.africa','proxy*'], // Actual pattern(s) to match.
                   dest: 'dist/',   // Destination path prefix.
                   ext: '.js'
                 }

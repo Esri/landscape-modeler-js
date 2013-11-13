@@ -1,3 +1,6 @@
+# distribution files
+dist/*
+
 # test data
 spec/*.json
 
