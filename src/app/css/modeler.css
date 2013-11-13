@@ -170,7 +170,7 @@ body {
 }
 /*TODO: use bootstrap class for icon*/
 .mdlrChartsHeaderIconCollapse {
-  background: url("images/glyphicons-halflings-white.png") no-repeat scroll -240px -95px transparent;
+  background: url("../../lib/bootstrap_v2/img/glyphicons-halflings-white.png") no-repeat scroll -240px -95px transparent;
   font-size: 0;
   margin-right: 5px;
   opacity: 0.7;
