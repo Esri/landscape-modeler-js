@@ -35,6 +35,7 @@ define([
     i18n: i18n,
     baseClass: "mdlrPortalControls",
     typeKeyword: "",
+    numberOfItems: "100",
 
     _setModelItemAttr: function(newModelItem) {
       if (newModelItem.type === undefined) {
@@ -108,7 +109,8 @@ define([
       _this.portal.signIn().then(function(/*portalUser*/) {
         // TODO: show loading...
         _this.portal.queryItems({
-          q : 'type: ("' + supportedItemTypes.join('" OR "') + '") AND typekeywords:"' + _this.typeKeyword + '"'
+          q : 'type: ("' + supportedItemTypes.join('" OR "') + '") AND typekeywords:"' + _this.typeKeyword + '"',
+          num: _this.numberOfItems
         }).then(function(queryResults) {
           // TODO: hide loading...
           if (!_this.modelItemList) {
