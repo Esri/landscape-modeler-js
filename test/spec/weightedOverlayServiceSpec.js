@@ -5,13 +5,14 @@ define([
 
   'esri/layers/ArcGISImageServiceLayer',
   'esri/geometry/Extent',
+  'esri/request',
 
   'weighted-overlay-modeler/WeightedOverlayService',
 
   'spec/config'
 ], function(
   lang, array, number,
-  ArcGISImageServiceLayer, Extent,
+  ArcGISImageServiceLayer, Extent, esriRequest,
   WeightedOverlayService,
   config
 ) {
@@ -61,74 +62,22 @@ define([
   });
 
   describe("when importing a model from a valid web map", function() {
+    var model;
     // set up:
     // init WO image service and import web map JSONs
     weightedOverlayService = new WeightedOverlayService(getImageServiceLayer(config.weightedOverlayService), config.weightedOverlayService.options);
-
-    var webMapJson = {
-      "operationalLayers": [{
-        "url": "http://ec2-54-243-84-56.compute-1.amazonaws.com/arcgis/rest/services/landscape/weightedOverlayAnalysis/ImageServer",
-        "id": "landscape/weightedOverlayAnalysis",
-        "visibility": true,
-        "opacity": 1,
-        "title": "Habitat Development Risk",
-        "renderingRule": {
-          "rasterFunction": "WeightedOverlay_7_1_9_colormap",
-          "rasterFunctionArguments": {
-            "Raster1": "$1",
-            "Weight_Raster1": 0.25,
-            "InputRanges_Raster1": [0, 0, 5, 5, 10, 10],
-            "OutputValues_Raster1": [1, 9, 9],
-            "Raster2": "$2",
-            "Weight_Raster2": 0.25,
-            "InputRanges_Raster2": [0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
-            "OutputValues_Raster2": [0, 1, 5, 8, 9],
-            "Raster3": "$32",
-            "Weight_Raster3": 0.25,
-            "InputRanges_Raster3": [11, 12, 12, 13, 21, 25, 31, 32, 41, 44, 52, 72, 81, 83, 90, 96],
-            "OutputValues_Raster3": [0, 0, 1, 1, 9, 7, 3, 5],
-            "Raster4": "$14",
-            "Weight_Raster4": 0.25,
-            "InputRanges_Raster4": [0, 1, 1, 3, 3, 5, 5, 10, 10, 45],
-            "OutputValues_Raster4": [9, 7, 5, 3, 1],
-            "Raster5": "$4",
-            "Weight_Raster5": 0,
-            "Raster6": "$4",
-            "Weight_Raster6": 0,
-            "Raster7": "$4",
-            "Weight_Raster7": 0,
-            "Colormap": [
-              [1, 38, 115, 0],
-              [2, 86, 148, 0],
-              [3, 39, 181, 0],
-              [4, 197, 219, 0],
-              [5, 255, 255, 0],
-              [6, 255, 195, 0],
-              [7, 250, 142, 0],
-              [8, 242, 85, 0],
-              [9, 230, 0, 0]
-            ]
-          },
-          "variableName": "Raster"
-        },
-        "remapRangeLabels": {
-          "Labels_Raster1": ["Non Critical", "Threatened", "Endangered"]
-        }
-      }],
-      "version": "1.9",
-      "baseMap": {
-        "baseMapLayers": [{
-          "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-          "id": "layer0",
-          "visibility": true,
-          "opacity": 1
-        }]
-      }
-    };
-    var model = weightedOverlayService.operationalLayersToModel(webMapJson.operationalLayers);
-
+    esriRequest({
+      url: "/base/test/data/webmap.json"
+    }).then(function(response) {
+      model = weightedOverlayService.operationalLayersToModel(response.operationalLayers);
+    });
     it('should return a model', function() {
-      expect(model).toBeDefined();
+      waitsFor(function() {
+        return model;
+      }, "Loaded web map JSON", 2000);
+      runs(function() {
+        expect(model).toBeDefined();
+      });
     });
     it('should have 1 model layer for each raster', function() {
       expect(model.overlayLayers).toBeDefined();
@@ -193,6 +142,7 @@ define([
     it('model layer urls should match service layer urls', function() {
       array.forEach(model.overlayLayers, function(overlayLayer) {
         var rasterLayer = weightedOverlayService.getRasterLayer(overlayLayer.id);
+        console.log(rasterLayer.url);
         expect(rasterLayer).toBeDefined();
         expect(overlayLayer.url).toEqual(rasterLayer.url);
       });

@@ -9,9 +9,10 @@ module.exports = function(config) {
     files: [
       'test/spec/main.js',
 
-      // all the sources, tests
+      // all the sources, tests, data
       {pattern: 'src/lib/weighted-overlay-modeler/*.js', included: false},
-      {pattern: 'test/spec/*.js', included: false}
+      {pattern: 'test/spec/*.js', included: false},
+      {pattern: 'test/data/*.json', included: false}
     ],
 
 
@@ -26,7 +27,7 @@ module.exports = function(config) {
 
     // proxy for cross domain requests
     proxies:  {
-      '/arcgis': 'http://landscapemodelerdev.arcgis.com/arcgis'
+      '/arcgis': 'http://landscape3dev.arcgis.com/arcgis'
     },
 
 
