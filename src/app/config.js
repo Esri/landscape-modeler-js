@@ -62,6 +62,7 @@ function() {
         colormapDefinitions: [
           {
             name: "1_9_green_yellow_red",
+            label: "Green Yellow Red",
             colors: [
               {label: "Extremely Low", value: 1, rgb: [38,115,0]},
               {label: "Very Low", value: 2, rgb: [86,148,0]},
@@ -75,6 +76,7 @@ function() {
             ]
           }, {
             name: "1_9_red_yellow_green",
+            label: "Red Yellow Green",
             colors: [
               {label: "Extremely Low", value: 1, rgb: [230,0,0]},
               {label: "Very Low", value: 2, rgb: [242,85,0]},
@@ -88,6 +90,7 @@ function() {
             ]
           }, {
             name: "1_9_yellow_to_dark_red",
+            label: "Yellow to Dark Red",
             colors: [
               {label: "Extremely Low", value:1, rgb:[255,255,128]},
               {label: "Very Low", value:2, rgb:[252,233,106]},
@@ -101,6 +104,7 @@ function() {
             ]
           }, {
             name: "1_9_dark_red_to_yellow",
+            label: "Dark Red to Yellow",
             colors: [
               {label: "Extremely Low", value:1, rgb:[107,0,0]},
               {label: "Very Low", value:2, rgb:[138,46,10]},
@@ -114,6 +118,7 @@ function() {
             ]
           }, {
             name: "1_9_light_gray_to_dark_gray",
+            label: "Light Gray to Dark Gray",
             colors: [
               {label: "Extremely Low", value:1, rgb:[219,219,219]},
               {label: "Very Low", value:2, rgb:[196,196,196]},
@@ -127,6 +132,7 @@ function() {
             ]
           }, {
             name: "1_9_dark_gray_to_light_gray",
+            label: "Dark Gray to Light Gray",
             colors: [
               {label: "Extremely Low", value:1, rgb:[69,69,69]},
               {label: "Very Low", value:2, rgb:[84,84,84]},
@@ -140,6 +146,7 @@ function() {
             ]
           }, {
             name: "1_9_light_brown_to_dark_brown",
+            label: "Light Brown to Dark Brown",
             colors: [
               {label: "Extremely Low", value:1, rgb:[250,233,212]},
               {label: "Very Low", value:2, rgb:[242,208,184]},
@@ -153,6 +160,7 @@ function() {
             ]
           }, {
             name: "1_9_dark_brown_to_light_brown",
+            label: "Dark Brown to Light Brown",
             colors: [
               {label: "Extremely Low", value:1, rgb:[171,65,36]},
               {label: "Very Low", value:2, rgb:[184,84,53]},
@@ -166,6 +174,7 @@ function() {
             ]
           }, {
             name: "1_9_full_spectrum_bright_red_to_blue",
+            label: "Full Spectrum - Bright Red to Blue",
             colors: [
               {label: "Extremely Low", value:1, rgb:[255,0,0]},
               {label: "Very Low", value:2, rgb:[255,119,0]},
@@ -179,6 +188,7 @@ function() {
             ]
           }, {
             name: "1_9_full_spectrum_bright_blue_to_red",
+            label: "Full Spectrum - Bright Blue to Red",
             colors: [
               {label: "Extremely Low", value:1, rgb:[0,0,255]},
               {label: "Very Low", value:2, rgb:[56,106,255]},
@@ -192,6 +202,7 @@ function() {
             ]
           }, {
             name: "1_9_partial_spectrum_yellow_to_blue",
+            label: "Partial Spectrum - Yellow to Blue",
             colors: [
               {label: "Extremely Low", value:1, rgb:[242,241,162]},
               {label: "Very Low", value:2, rgb:[252,250,98]},
@@ -205,6 +216,7 @@ function() {
             ]
           }, {
             name: "1_9_partial_spectrum_blue_to_yellow",
+            label: "Partial Spectrum - Blue to Yellow",
             colors: [
               {label: "Extremely Low", value:1, rgb:[7,29,173]},
               {label: "Very Low", value:2, rgb:[99,24,204]},
@@ -218,6 +230,7 @@ function() {
             ]
           }, {
             name: "1_9_yellow_green_to_dark_blue",
+            label: "Yellow-Green to Dark Blue",
             colors: [
               {label: "Extremely Low", value:1, rgb:[255,255,128]},
               {label: "Very Low", value:2, rgb:[182,245,88]},
@@ -230,6 +243,7 @@ function() {
               {label: "Extremely High", value:9, rgb:[12,16,120]}            ]
           }, {
             name: "1_9_dark_blue_to_yellow_green",
+            label: "Dark Blue to Yellow-Green",
             colors: [
               {label: "Extremely Low", value:1, rgb:[12,16,120]},
               {label: "Very Low", value:2, rgb:[31,62,140]},
@@ -243,6 +257,7 @@ function() {
             ]
           }, {
             name: "1_9_cold_to_hot_diverging",
+            label: "Cold to Hot Diverging",
             colors: [
               {label: "Extremely Low", value:1, rgb:[40,146,199]},
               {label: "Very Low", value:2, rgb:[109,169,179]},
@@ -256,6 +271,7 @@ function() {
             ]
           }, {
             name: "1_9_hot_to_cold_diverging",
+            label: "Hot to Cold Diverging",
             colors: [
               {label: "Extremely Low", value:1, rgb:[232,16,20]},
               {label: "Very Low", value:2, rgb:[242,89,34]},
@@ -269,6 +285,7 @@ function() {
             ]
           }, {
             name: "1_9_surface_low_to_high",
+            label: "Surface - Low to High",
             colors: [
               {label: "Extremely Low", value:1, rgb:[112,153,89]},
               {label: "Very Low", value:2, rgb:[176,196,124]},
@@ -282,6 +299,7 @@ function() {
             ]
           }, {
             name: "1_9_surface_high_to_low",
+            label: "Surface - High to Low",
             colors: [
               {label: "Extremely Low", value:1, rgb:[255,242,255]},
               {label: "Very Low", value:2, rgb:[255,184,193]},
