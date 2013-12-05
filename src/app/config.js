@@ -1,5 +1,9 @@
 define([],
 function() {
+  // environment variables to be changed by the deployment script
+  var portalUrl = "https://devext.arcgis.com";
+  var weightedOverlayServiceUrl = "https://landscape3dev.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Weighted_Overlay/ImageServer";
+
   return {
     // app title
     appTitle: "Landscape Modeler",
@@ -7,7 +11,7 @@ function() {
     // oAuth
     oauthOptions: {
       appId: "landscapemodeler",
-      portal: "https://devext.arcgis.com",
+      portal: portalUrl,
       expiration: (14 * 24 * 60), // 2 weeks, in minutes
       popup:      false
     },
@@ -45,7 +49,7 @@ function() {
     weightedOverlayService: {
       // image service that publishes all available raster layers
       // and the raster functions that operate on them
-      url: "https://landscape3dev.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Weighted_Overlay/ImageServer",
+      url: weightedOverlayServiceUrl,
       // options for initializing the model service
       options: {
         rasterFunctionName: "WeightedOverlay_7_1_9_colormap",
