@@ -1,8 +1,8 @@
 define([],
 function() {
   // environment variables to be changed by the deployment script
-  var portalUrl = "https://devext.arcgis.com";
-  var weightedOverlayServiceUrl = "https://landscape3dev.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Weighted_Overlay/ImageServer";
+  var portalUrl = "http://www.arcgis.com";
+  var weightedOverlayServiceUrl = "http://landscapemodeler.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Weighted_Overlay/ImageServer";
 
   return {
     // app title
@@ -332,6 +332,6 @@ function() {
 
     // proxy and utility urls
     proxyUrl: "./proxy.ashx",
-    geometryServiceUrl: "http://landscapemodelerdev.arcgis.com/arcgis/rest/services/Utilities/Geometry/GeometryServer"
+    geometryServiceUrl: "http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
   };
 });
