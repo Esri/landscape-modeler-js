@@ -105,6 +105,7 @@ function(
           _this.model.colormapDefinition = colormapDefinition;
           _this.runModel();
         }));
+        menuItem.containerNode.title = colormapDefinition.label;
         menu.addChild(menuItem);
       });
       this.ColormapSelector.set("dropDown", menu);
