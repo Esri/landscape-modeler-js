@@ -1,6 +1,6 @@
 # Esri Landscape Modeler
 
-Landscape Modeler is a JavaScript web applicaton that allows users to perform fast weighted overaly analyis. This is ideal when a user wants to test their ideas about a suitability or risk analysis model at multiple scales or over a large area.
+Landscape Modeler is a JavaScript web application that allows users to perform fast weighted overlay analysis. This is ideal when a user wants to test ideas about a suitability or risk analysis model at multiple scales or over a large area.
 
 Landscape Modeler is built on top of the [ArcGIS API for JavaScript](https://developers.arcgis.com/en/javascript/) and ArcGIS Server image services. By default it is configured to use the [ready-to-use landscape layers on ArcGIS Online](http://esri.maps.arcgis.com/home/group.html?owner=esri&title=Landscape%20Layers), but it can be configured to use other data that is exposed as an image service published with a weighted overlay raster function.
 
@@ -14,7 +14,7 @@ Landscape Modeler is built on top of the [ArcGIS API for JavaScript](https://dev
 ## Features
 
 Landscape Modeler allows any user with a valid [ArcGIS Online](http://www.arcgis.com/) organizational account to:
-* Design weighted overlay models using the the [ready-to-use landscape layers on ArcGIS Online](http://esri.maps.arcgis.com/home/group.html?owner=esri&title=Landscape%20Layers)
+* Design weighted overlay models using the [ready-to-use landscape layers on ArcGIS Online](http://esri.maps.arcgis.com/home/group.html?owner=esri&title=Landscape%20Layers)
 * Run those models in real time at a variety of scales and extents
 * Save models as ArcGIS Online web maps that can be loaded into other applications or ArcGIS Desktop
 * Load and view models that have been saved and shared by others
@@ -26,7 +26,6 @@ Landscape Modeler allows any user with a valid [ArcGIS Online](http://www.arcgis
 2. `cd landscape-modeler-js`
 3. `npm install` for Grunt/Karma
 4. Configure image service parameters in app/config.js (optional)
-5. Host the `landscape-modeler-js` folder under a web server
 
 ## Requirements
 
@@ -35,14 +34,14 @@ Landscape Modeler allows any user with a valid [ArcGIS Online](http://www.arcgis
 
 ### Dependencies
 
-#### Required
+#### Runtime
 
-* ArcGIS API for JavaScript v3.3 or later
+* [ArcGIS for JavaScript API](https://developers.arcgis.com/en/javascript/) v3.3 or later
 
-#### Optional
+#### Development (optional)
 
-* Karma (for running tests)
-* Grunt (for builds)
+* [Karma](http://karma-runner.github.io) (for running tests)
+* [Grunt](http://gruntjs.com) (for builds)
 
 ## Resources
 
