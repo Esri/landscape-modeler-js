@@ -2,10 +2,9 @@
   "name": "landscape-modeler-js",
   "version": "0.1.0",
   "description": "A web application for designing, running, and saving weighted overlay models using the Esri ArcGIS API for JavaScript and ArcGIS Server image services.",
-  "repository" :
-  {
-    "type" : "git",
-    "url" : "https://github.com/ArcGIS/landscape-modeler-js.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcGIS/landscape-modeler-js.git"
   },
   "main": "",
   "keywords": [
@@ -32,7 +31,10 @@
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-clean": "~0.5.0"
+    "grunt-contrib-clean": "~0.5.0",
+    "karma-chai": "0.0.2",
+    "mocha": "~1.15.1",
+    "karma-mocha": "~0.1.1"
   },
   "readmeFilename": "README.md"
 }

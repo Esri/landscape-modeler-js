@@ -3,7 +3,7 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: '',
 
-    frameworks: ['jasmine', 'dojo'],
+    frameworks: ['mocha', 'chai', 'dojo'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -15,6 +15,9 @@ module.exports = function(config) {
       {pattern: 'test/data/*.json', included: false}
     ],
 
+    // list of files to exclude
+    // exclude: [
+    // ],
 
     // test results reporter to use
     // possible values: dots || progress
@@ -63,7 +66,8 @@ module.exports = function(config) {
 
     plugins: [
       'karma-dojo',
-      'karma-jasmine',
+      'karma-mocha',
+      'karma-chai',
       'karma-chrome-launcher',
       'karma-firefox-launcher'
     ]

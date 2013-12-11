@@ -50,11 +50,11 @@ define([
         };
         for(var setting in configSettings.options) {
           var val = weightedOverlayService[setting];
-          expect(val).toBeDefined();
+          expect(val).to.not.be["undefined"];
           if (defaultOptions[setting]) {
-            expect(val).toEqual(lang.mixin(defaultOptions[setting], configSettings.options[setting]));
+            expect(val).to.deep.equal(lang.mixin(defaultOptions[setting], configSettings.options[setting]));
           } else {
-            expect(val).toEqual(configSettings.options[setting]);
+            expect(val).to.deep.equal(configSettings.options[setting]);
           }
         }
       });
@@ -64,42 +64,45 @@ define([
   describe("when importing a model from a valid web map", function() {
     var model;
     // set up:
-    // init WO image service and import web map JSONs
-    weightedOverlayService = new WeightedOverlayService(getImageServiceLayer(config.weightedOverlayService), config.weightedOverlayService.options);
-    esriRequest({
-      url: "/base/test/data/webmap.json"
-    }).then(function(response) {
-      model = weightedOverlayService.operationalLayersToModel(response.operationalLayers);
-    });
-    it('should return a model', function() {
-      waitsFor(function() {
-        return model;
-      }, "Loaded web map JSON", 2000);
-      runs(function() {
-        expect(model).toBeDefined();
+    before(function(done) {
+      // init WO image service and import web map JSONs
+      weightedOverlayService = new WeightedOverlayService(getImageServiceLayer(config.weightedOverlayService), config.weightedOverlayService.options);
+      esriRequest({
+        url: "/base/test/data/webmap.json"
+      }).then(function(response) {
+        model = weightedOverlayService.operationalLayersToModel(response.operationalLayers);
+        done();
       });
     });
+    it('should return a model', function() {
+      // waitsFor(function() {
+      //   return model;
+      // }, "Loaded web map JSON", 2000);
+      // runs(function() {
+        expect(model).to.not.be["undefined"];
+      // });
+    });
     it('should have 1 model layer for each raster', function() {
-      expect(model.overlayLayers).toBeDefined();
-      expect(model.overlayLayers.length).toEqual(4); // WARNING: magic value
+      expect(model.overlayLayers).to.not.be["undefined"];
+      expect(model.overlayLayers.length).to.equal(4); // WARNING: magic value
     });
     it('model layer ids should match raster ids', function() {
       array.forEach(model.overlayLayers, function(overlayLayer) {
-        expect(overlayLayer.id).toBeDefined();
-        expect(overlayLayer.id).toBeGreaterThan(0);
+        expect(overlayLayer.id).to.not.be["undefined"];
+        expect(overlayLayer.id).to.be.above(0);
       });
     });
     it('model layer weights should match raster weights', function() {
       array.forEach(model.overlayLayers, function(overlayLayer) {
-        expect(overlayLayer.weight).toBeDefined();
+        expect(overlayLayer.weight).to.not.be["undefined"];
         // WARNING: expects that all weights are the same
-        expect(overlayLayer.weight).toEqual(25);
+        expect(overlayLayer.weight).to.equal(25);
       });
     });
     it('model layer remap ranges should match raster input ranges / output values', function() {
       var remapRange;
       array.forEach(model.overlayLayers, function(overlayLayer) {
-        expect(overlayLayer.remapRanges).toBeDefined();
+        expect(overlayLayer.remapRanges).to.not.be["undefined"];
         // test one layer
         if (overlayLayer.id === 1) {
           // "Raster1": "$1",
@@ -107,35 +110,35 @@ define([
           // "InputRanges_Raster1": [0, 0, 5, 5, 10, 10],
           // "OutputValues_Raster1": [1, 9, 9],
           remapRange = overlayLayer.remapRanges[0];
-          expect(remapRange.inputMin).toEqual(0);
-          expect(remapRange.inputMax).toEqual(0);
-          expect(remapRange.outputValue).toEqual(1);
-          expect(remapRange.label).toEqual('Non Critical');
+          expect(remapRange.inputMin).to.equal(0);
+          expect(remapRange.inputMax).to.equal(0);
+          expect(remapRange.outputValue).to.equal(1);
+          expect(remapRange.label).to.equal('Non Critical');
           remapRange = overlayLayer.remapRanges[1];
-          expect(remapRange.inputMin).toEqual(5);
-          expect(remapRange.inputMax).toEqual(5);
-          expect(remapRange.outputValue).toEqual(9);
-          expect(remapRange.label).toEqual('Threatened');
+          expect(remapRange.inputMin).to.equal(5);
+          expect(remapRange.inputMax).to.equal(5);
+          expect(remapRange.outputValue).to.equal(9);
+          expect(remapRange.label).to.equal('Threatened');
           remapRange = overlayLayer.remapRanges[2];
-          expect(remapRange.inputMin).toEqual(10);
-          expect(remapRange.inputMax).toEqual(10);
-          expect(remapRange.outputValue).toEqual(9);
-          expect(remapRange.label).toEqual('Endangered');
+          expect(remapRange.inputMin).to.equal(10);
+          expect(remapRange.inputMax).to.equal(10);
+          expect(remapRange.outputValue).to.equal(9);
+          expect(remapRange.label).to.equal('Endangered');
         } else if (overlayLayer.id === 14) {
           // "Raster4": "$14",
           // "Weight_Raster4": 0.25,
           // "InputRanges_Raster4": [0, 1, 1, 3, 3, 5, 5, 10, 10, 45],
           // "OutputValues_Raster4": [9, 7, 5, 3, 1],
           remapRange = overlayLayer.remapRanges[0];
-          expect(remapRange.inputMin).toEqual(0);
-          expect(remapRange.inputMax).toEqual(1);
-          expect(remapRange.outputValue).toEqual(9);
-          expect(remapRange.label).toEqual('0 - 1');
+          expect(remapRange.inputMin).to.equal(0);
+          expect(remapRange.inputMax).to.equal(1);
+          expect(remapRange.outputValue).to.equal(9);
+          expect(remapRange.label).to.equal('0 - 1');
           remapRange = overlayLayer.remapRanges[4];
-          expect(remapRange.inputMin).toEqual(10);
-          expect(remapRange.inputMax).toEqual(45);
-          expect(remapRange.outputValue).toEqual(1);
-          expect(remapRange.label).toEqual('10 - 45');
+          expect(remapRange.inputMin).to.equal(10);
+          expect(remapRange.inputMax).to.equal(45);
+          expect(remapRange.outputValue).to.equal(1);
+          expect(remapRange.label).to.equal('10 - 45');
         }
       });
     });
@@ -143,27 +146,27 @@ define([
       array.forEach(model.overlayLayers, function(overlayLayer) {
         var rasterLayer = weightedOverlayService.getRasterLayer(overlayLayer.id);
         console.log(rasterLayer.url);
-        expect(rasterLayer).toBeDefined();
-        expect(overlayLayer.url).toEqual(rasterLayer.url);
+        expect(rasterLayer).to.not.be["undefined"];
+        expect(overlayLayer.url).to.equal(rasterLayer.url);
       });
     });
     it('model layer titles should match layer titles', function() {
       array.forEach(model.overlayLayers, function(overlayLayer) {
         var rasterLayer = weightedOverlayService.getRasterLayer(overlayLayer.id);
-        expect(rasterLayer).toBeDefined();
-        expect(overlayLayer.title).toEqual(rasterLayer.title);
+        expect(rasterLayer).to.not.be["undefined"];
+        expect(overlayLayer.title).to.equal(rasterLayer.title);
       });
     });
     it('model layer names should match layer names', function() {
       array.forEach(model.overlayLayers, function(overlayLayer) {
         var rasterLayer = weightedOverlayService.getRasterLayer(overlayLayer.id);
-        expect(rasterLayer).toBeDefined();
-        expect(overlayLayer.name).toEqual(rasterLayer.name);
+        expect(rasterLayer).to.not.be["undefined"];
+        expect(overlayLayer.name).to.equal(rasterLayer.name);
       });
     });
     it('model colormap definition should match raster function colormap arg', function() {
-      expect(model.colormapDefinition).toBeDefined();
-      expect(model.colormapDefinition).toEqual({
+      expect(model.colormapDefinition).to.not.be["undefined"];
+      expect(model.colormapDefinition).to.deep.equal({
         name: "1_9_green_yellow_red",
         colors: [
           {label: "Extremely Low", value: 1, rgb: [38,115,0]},
@@ -381,21 +384,21 @@ define([
       modelLayer = null;
     });
     it('should create an operational layer for the model with same url, id, and title', function() {
-      expect(modelLayer).toBeDefined();
-      expect(modelLayer.url).toBeDefined();
-      expect(modelLayer.url).toEqual(weightedOverlayService.imageServiceLayer.url);
-      expect(modelLayer.id).toBeDefined();
-      expect(modelLayer.id).toEqual(weightedOverlayService.imageServiceLayer.id);
-      expect(modelLayer.opacity).toBeDefined();
-      expect(modelLayer.opacity).toEqual(weightedOverlayService.imageServiceLayer.opacity);
-      expect(modelLayer.title).toBeDefined();
-      expect(modelLayer.title).toEqual(exportOptions.modelTitle);
+      expect(modelLayer).to.not.be["undefined"];
+      expect(modelLayer.url).to.not.be["undefined"];
+      expect(modelLayer.url).to.equal(weightedOverlayService.imageServiceLayer.url);
+      expect(modelLayer.id).to.not.be["undefined"];
+      expect(modelLayer.id).to.equal(weightedOverlayService.imageServiceLayer.id);
+      expect(modelLayer.opacity).to.not.be["undefined"];
+      expect(modelLayer.opacity).to.equal(weightedOverlayService.imageServiceLayer.opacity);
+      expect(modelLayer.title).to.not.be["undefined"];
+      expect(modelLayer.title).to.equal(exportOptions.modelTitle);
     });
     it('should create a raster function with id, weight, and remap parameters for each model layer', function() {
       var args;
-      expect(modelLayer).toBeDefined();
-      expect(modelLayer.renderingRule).toBeDefined();
-      expect(modelLayer.renderingRule.rasterFunctionArguments).toBeDefined();
+      expect(modelLayer).to.not.be["undefined"];
+      expect(modelLayer.renderingRule).to.not.be["undefined"];
+      expect(modelLayer.renderingRule.rasterFunctionArguments).to.not.be["undefined"];
       args = modelLayer.renderingRule.rasterFunctionArguments;
       // test ids and weights of each layer
       // WARNING: assumes that raster function args are created in order
@@ -418,35 +421,35 @@ define([
             noDataLabels.push(remapRange.label);
           }
         });
-        expect(args[weightedOverlayService.argumentNamePrefixes.id + argIndex]).toEqual('$' + overlayLayer.id);
-        expect(args[weightedOverlayService.argumentNamePrefixes.weight + argIndex]).toEqual(number.round(overlayLayer.weight / 100, 2));
+        expect(args[weightedOverlayService.argumentNamePrefixes.id + argIndex]).to.equal('$' + overlayLayer.id);
+        expect(args[weightedOverlayService.argumentNamePrefixes.weight + argIndex]).to.equal(number.round(overlayLayer.weight / 100, 2));
         if (outputValues.length > 0) {
-          expect(args[weightedOverlayService.argumentNamePrefixes.inputRanges + argIndex]).toEqual(inputRanges);
-          expect(args[weightedOverlayService.argumentNamePrefixes.outputValues + argIndex]).toEqual(outputValues);
-          expect(modelLayer.remapRangeLabels).toBeDefined();
-          expect(modelLayer.remapRangeLabels[weightedOverlayService.argumentNamePrefixes.labels + argIndex]).toEqual(labels);
+          expect(args[weightedOverlayService.argumentNamePrefixes.inputRanges + argIndex]).to.deep.equal(inputRanges);
+          expect(args[weightedOverlayService.argumentNamePrefixes.outputValues + argIndex]).to.deep.equal(outputValues);
+          expect(modelLayer.remapRangeLabels).to.not.be["undefined"];
+          expect(modelLayer.remapRangeLabels[weightedOverlayService.argumentNamePrefixes.labels + argIndex]).to.deep.equal(labels);
         }
         if (noDataRanges.length > 0) {
-          expect(args[weightedOverlayService.argumentNamePrefixes.noDataRanges + argIndex]).toEqual(noDataRanges);
-          expect(modelLayer.noDataRangeLabels).toBeDefined();
-          expect(modelLayer.noDataRangeLabels[weightedOverlayService.argumentNamePrefixes.noDataLabels + argIndex]).toEqual(noDataLabels);
+          expect(args[weightedOverlayService.argumentNamePrefixes.noDataRanges + argIndex]).to.deep.equal(noDataRanges);
+          expect(modelLayer.noDataRangeLabels).to.not.be["undefined"];
+          expect(modelLayer.noDataRangeLabels[weightedOverlayService.argumentNamePrefixes.noDataLabels + argIndex]).to.deep.equal(noDataLabels);
         }
-        expect(args[weightedOverlayService.argumentNamePrefixes.labels + argIndex]).toBeUndefined();
-        expect(args[weightedOverlayService.argumentNamePrefixes.noDataLabels + argIndex]).toBeUndefined();
+        expect(args[weightedOverlayService.argumentNamePrefixes.labels + argIndex]).to.be["undefined"];
+        expect(args[weightedOverlayService.argumentNamePrefixes.noDataLabels + argIndex]).to.be["undefined"];
       });
     });
     it('should have the same colormap as the model', function() {
       var colormap;
-      expect(modelLayer).toBeDefined();
-      expect(modelLayer.renderingRule).toBeDefined();
-      expect(modelLayer.renderingRule.rasterFunctionArguments).toBeDefined();
-      expect(modelLayer.renderingRule.rasterFunctionArguments).toBeDefined();
+      expect(modelLayer).to.not.be["undefined"];
+      expect(modelLayer.renderingRule).to.not.be["undefined"];
+      expect(modelLayer.renderingRule.rasterFunctionArguments).to.not.be["undefined"];
+      expect(modelLayer.renderingRule.rasterFunctionArguments).to.not.be["undefined"];
       colormap = modelLayer.renderingRule.rasterFunctionArguments[weightedOverlayService.colorMapArgName];
       // test ids and weights of each layer
       // WARNING: assumes that raster function args are created in order
-      expect(colormap).toBeDefined();
+      expect(colormap).to.not.be["undefined"];
       array.forEach(exportModel.colormapDefinition.colors, function(color, index) {
-        expect(colormap[index]).toEqual([color.value].concat(color.rgb));
+        expect(colormap[index]).to.deep.equal([color.value].concat(color.rgb));
       });
     });
     // TODO: model layers as individual overlay layers
@@ -636,39 +639,39 @@ define([
     weightedOverlayService = new WeightedOverlayService(getImageServiceLayer(config.weightedOverlayService), config.weightedOverlayService.options);
 
     it("should return no error messages if model is valid", function() {
-      expect(weightedOverlayService.validateModel(validModel).isValid).toBeTruthy();
+      expect(weightedOverlayService.validateModel(validModel).isValid).to.be.ok;
     });
     it("should be invalid if overlay layers is not an array", function() {
       var res = weightedOverlayService.validateModel();
-      expect(res.isValid).toBeFalsy();
-      expect(res.modelErrors).toContain("Overlay layers is not defined");
+      expect(res.isValid).to.not.be.ok;
+      expect(res.modelErrors).to.contain("Overlay layers is not defined");
     });
     it("should be invalid if less than one overlay layers", function() {
       var res = weightedOverlayService.validateModel({
         overlayLayers: []
       });
-      expect(res.isValid).toBeFalsy();
-      expect(res.modelErrors).toContain("At least one overlay layer is required");
+      expect(res.isValid).to.not.be.ok;
+      expect(res.modelErrors).to.contain("At least one overlay layer is required");
     });
     it("should be invalid if weights don't add up to 100", function() {
       var res = weightedOverlayService.validateModel({
         overlayLayers: [{}, { weight: 50}]
       });
-      expect(res.isValid).toBeFalsy();
-      expect(res.modelErrors).toContain("Overlay layer weights must add up to 100");
+      expect(res.isValid).to.not.be.ok;
+      expect(res.modelErrors).to.contain("Overlay layer weights must add up to 100");
       res = weightedOverlayService.validateModel({
         overlayLayers: [{weight: 51}, { weight: 50}]
       });
-      expect(res.isValid).toBeFalsy();
-      expect(res.modelErrors).toContain("Overlay layer weights must add up to 100");
+      expect(res.isValid).to.not.be.ok;
+      expect(res.modelErrors).to.contain("Overlay layer weights must add up to 100");
     });
     it("should be invalid if one or more layers is missing remap ranges", function() {
       var res = weightedOverlayService.validateModel({
         overlayLayers: [{ weight: 50, remapRanges: []}, { weight: 50}]
       });
-      expect(res.isValid).toBeFalsy();
-      expect(res.modelErrors).toContain("Overlay layer [0] missing remap ranges");
-      expect(res.modelErrors).toContain("Overlay layer [1] missing remap ranges");
+      expect(res.isValid).to.not.be.ok;
+      expect(res.modelErrors).to.contain("Overlay layer [0] missing remap ranges");
+      expect(res.modelErrors).to.contain("Overlay layer [1] missing remap ranges");
     });
     it("should be invalid if one or more remap ranges is missing an output value", function() {
       // modify an otherwise valid model
@@ -677,11 +680,11 @@ define([
       validModel.overlayLayers[2].remapRanges[2].outputValue = "not a number";
       validModel.overlayLayers[3].remapRanges[3].outputValue = {};
       var res = weightedOverlayService.validateModel(validModel);
-      expect(res.isValid).toBeFalsy();
-      expect(res.modelErrors).toContain("Overlay layer [0] remap ranges [0] output value missing or invalid");
-      expect(res.modelErrors).toContain("Overlay layer [1] remap ranges [1] output value missing or invalid");
-      expect(res.modelErrors).toContain("Overlay layer [2] remap ranges [2] output value missing or invalid");
-      expect(res.modelErrors).toContain("Overlay layer [3] remap ranges [3] output value missing or invalid");
+      expect(res.isValid).to.not.be.ok;
+      expect(res.modelErrors).to.contain("Overlay layer [0] remap ranges [0] output value missing or invalid");
+      expect(res.modelErrors).to.contain("Overlay layer [1] remap ranges [1] output value missing or invalid");
+      expect(res.modelErrors).to.contain("Overlay layer [2] remap ranges [2] output value missing or invalid");
+      expect(res.modelErrors).to.contain("Overlay layer [3] remap ranges [3] output value missing or invalid");
     });
     it("should be invalid if one or more remap ranges does not have a input range w/ min <= max", function() {
       delete validModel.overlayLayers[0].remapRanges[0].inputMin;
@@ -689,10 +692,10 @@ define([
       validModel.overlayLayers[1].remapRanges[1].inputMin = null;
       validModel.overlayLayers[2].remapRanges[2].inputMin = validModel.overlayLayers[2].remapRanges[2].inputMax + 1;
       var res = weightedOverlayService.validateModel(validModel);
-      expect(res.isValid).toBeFalsy();
-      expect(res.modelErrors).toContain("Overlay layer [0] remap ranges [0] input min/max missing or invalid");
-      expect(res.modelErrors).toContain("Overlay layer [1] remap ranges [1] input min/max missing or invalid");
-      expect(res.modelErrors).toContain("Overlay layer [2] remap ranges [2] input min/max missing or invalid");
+      expect(res.isValid).to.not.be.ok;
+      expect(res.modelErrors).to.contain("Overlay layer [0] remap ranges [0] input min/max missing or invalid");
+      expect(res.modelErrors).to.contain("Overlay layer [1] remap ranges [1] input min/max missing or invalid");
+      expect(res.modelErrors).to.contain("Overlay layer [2] remap ranges [2] input min/max missing or invalid");
     });
   });
 
@@ -703,10 +706,10 @@ define([
       newModel = weightedOverlayService.createNewModel();
     });
     it("should have an empty arry of overlay layers", function() {
-      expect(newModel.overlayLayers).toEqual([]);
+      expect(newModel.overlayLayers).to.deep.equal([]);
     });
     it("should have the default colormap definition", function() {
-      expect(newModel.colormapDefinition).toEqual(weightedOverlayService.colormapDefinitions[0]);
+      expect(newModel.colormapDefinition).to.deep.equal(weightedOverlayService.colormapDefinitions[0]);
     });
   });
 
@@ -724,8 +727,8 @@ define([
       runs(function() {
         var prevTitle = "";
         array.forEach(weightedOverlayService.rasterLayers, function(rasterLayer) {
-          expect(rasterLayer.id).toBeDefined();
-          expect(rasterLayer.remapRanges).toBeDefined();
+          expect(rasterLayer.id).to.not.be["undefined"];
+          expect(rasterLayer.remapRanges).to.not.be["undefined"];
           expect(rasterLayer.title).not.toBeLessThan(prevTitle);
           prevTitle = rasterLayer.title;
         });
@@ -746,11 +749,11 @@ define([
         var zoomedOut = new Extent({"xmin":-13919697.86644086,"ymin":3940010.875079476,"xmax":-12997561.557208745,"ymax":4827903.395639843,"spatialReference":{"wkid":102100}});
         var zoomedIn = new Extent({"xmin":-13042661.9077,"ymin":4042878.2515999973,"xmax":-13039929.284,"ymax":4043623.512599997,"spatialReference":{"wkid":102100}});
         var pixelSize = weightedOverlayService.getModelPixelSize(zoomedOut);
-        expect(pixelSize.x).toBeGreaterThan(weightedOverlayService.pixelSizeX);
-        expect(pixelSize.y).toBeGreaterThan(weightedOverlayService.pixelSizeY);
+        expect(pixelSize.x).to.be.above(weightedOverlayService.pixelSizeX);
+        expect(pixelSize.y).to.be.above(weightedOverlayService.pixelSizeY);
         pixelSize = weightedOverlayService.getModelPixelSize(zoomedIn);
-        expect(pixelSize.x).toEqual(weightedOverlayService.pixelSizeX);
-        expect(pixelSize.y).toEqual(weightedOverlayService.pixelSizeY);
+        expect(pixelSize.x).to.equal(weightedOverlayService.pixelSizeX);
+        expect(pixelSize.y).to.equal(weightedOverlayService.pixelSizeY);
       });
     });
   });
@@ -865,28 +868,28 @@ define([
   //     // console.log(JSON.stringify(weightedOverlayService.rasterLayers));
   //   });
   //   it('should have the same number of layers as features', function() {
-  //     expect(weightedOverlayService.rasterLayers).toBeDefined();
-  //     expect(weightedOverlayService.rasterLayers.length).toEqual(features.length);
+  //     expect(weightedOverlayService.rasterLayers).to.not.be["undefined"];
+  //     expect(weightedOverlayService.rasterLayers.length).to.equal(features.length);
   //   });
   //   it('should have raster layers with the same attributes as the features', function() {
-  //     expect(weightedOverlayService.rasterLayers).toBeDefined();
+  //     expect(weightedOverlayService.rasterLayers).to.not.be["undefined"];
   //     array.forEach(weightedOverlayService.rasterLayers, function(rasterLayer, index) {
-  //       expect(rasterLayer.id).toBeDefined();
-  //       expect(rasterLayer.id).toEqual(features[index].attributes.OBJECTID);
-  //       expect(rasterLayer.name).toEqual(features[index].attributes.Name);
-  //       expect(rasterLayer.title).toEqual(features[index].attributes.Title);
-  //       expect(rasterLayer.url).toEqual(features[index].attributes.Url);
+  //       expect(rasterLayer.id).to.not.be["undefined"];
+  //       expect(rasterLayer.id).to.equal(features[index].attributes.OBJECTID);
+  //       expect(rasterLayer.name).to.equal(features[index].attributes.Name);
+  //       expect(rasterLayer.title).to.equal(features[index].attributes.Title);
+  //       expect(rasterLayer.url).to.equal(features[index].attributes.Url);
   //     });
   //   });
   //   it('should have raster layers with remap ranges defined from feature attributes', function() {
-  //     expect(weightedOverlayService.rasterLayers).toBeDefined();
+  //     expect(weightedOverlayService.rasterLayers).to.not.be["undefined"];
   //     array.forEach(weightedOverlayService.rasterLayers, function(rasterLayer, index) {
   //       var attr = features[index].attributes,
   //         inputRanges,
   //         outputValues,
   //         labels;
   //       if (attr.InputRanges && attr.OutputValues) {
-  //         expect(rasterLayer.remapRanges).toBeDefined();
+  //         expect(rasterLayer.remapRanges).to.not.be["undefined"];
   //         inputRanges = array.map(attr.InputRanges.split(','), function(val) {
   //           return parseInt(val.trim(), 10);
   //         });
@@ -898,14 +901,14 @@ define([
   //             return val.trim();
   //           });
   //         }
-  //         expect(rasterLayer.remapRanges.length).toEqual(outputValues.length);
+  //         expect(rasterLayer.remapRanges.length).to.equal(outputValues.length);
   //         array.forEach(rasterLayer.remapRanges, function(remapRange, index2) {
-  //           expect(remapRange).toBeDefined();
-  //           expect(remapRange.outputValue).toEqual(outputValues[index2]);
-  //           expect(remapRange.inputMin).toEqual(inputRanges[index2 * 2]);
-  //           expect(remapRange.inputMax).toEqual(inputRanges[(index2 * 2) + 1]);
-  //           expect(remapRange.label).toEqual(labels[index2] || remapRange.inputMin + ' - ' + remapRange.inputMax);
-  //           // expect(1).toEqual(2);
+  //           expect(remapRange).to.not.be["undefined"];
+  //           expect(remapRange.outputValue).to.equal(outputValues[index2]);
+  //           expect(remapRange.inputMin).to.equal(inputRanges[index2 * 2]);
+  //           expect(remapRange.inputMax).to.equal(inputRanges[(index2 * 2) + 1]);
+  //           expect(remapRange.label).to.equal(labels[index2] || remapRange.inputMin + ' - ' + remapRange.inputMax);
+  //           // expect(1).to.equal(2);
   //         });
   //       }
   //     });
