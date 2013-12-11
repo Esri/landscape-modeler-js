@@ -364,41 +364,10 @@ function(
     // query rasters from image service
     // sort them (default to title ascending)
     // for each result, create a raster layer object
-    initRasterLayers: function(featureCompareFunc) {
+    initRasterLayers: function(options) {
       var _this = this;
-      var comparFunc = featureCompareFunc || function(a,b) {
-        if (a.attributes.Title < b.attributes.Title) {
-          return -1;
-        } else if (a.attributes.Title > b.attributes.Title) {
-          return 1;
-        } else {
-          return 0;
-        }
-      };
       return this.queryRasters().then(function(queryResults) {
-        var features = queryResults.features;
-        var rasterLayer;
-        if (features && features.length && features.length > 0 && features[0].attributes) {
-          // clear current raster layers if any
-          if (_this.rasterLayers && _this.rasterLayers.push) {
-            _this.rasterLayers.length = 0;
-          } else {
-            _this.rasterLayers = [];
-          }
-          if (comparFunc) {
-            // sort the features
-            features.sort(comparFunc);
-          }
-          // get raster layer from each feature
-          array.forEach(features, function(feature) {
-            rasterLayer = featureToRasterLayer(feature);
-            if (rasterLayer) {
-              _this.rasterLayers.push(rasterLayer);
-            }
-          });
-
-        }
-        return _this.rasterLayers;
+        return _this._initRasterLayers(queryResults.features, options);
       });
     },
 
@@ -417,6 +386,46 @@ function(
         handleAs: "json",
         callbackParamName: "callback"
       });
+    },
+
+    // check array of features, if valid then
+    // clear current array of raster layers
+    // sort features and create a raster for each feature
+    _initRasterLayers: function (features, options) {
+      var _this = this;
+      var rasterLayer;
+      var opts = options || {};
+      var compareFunc = opts.featureCompareFunc || function(a,b) {
+        if (a.attributes.Title < b.attributes.Title) {
+          return -1;
+        } else if (a.attributes.Title > b.attributes.Title) {
+          return 1;
+        } else {
+          return 0;
+        }
+      };
+
+      if (features && features.length && features.length > 0 && features[0].attributes) {
+        // clear current raster layers if any
+        if (_this.rasterLayers && _this.rasterLayers.push) {
+          _this.rasterLayers.length = 0;
+        } else {
+          _this.rasterLayers = [];
+        }
+        if (compareFunc) {
+          // sort the features
+          features.sort(compareFunc);
+        }
+        // get raster layer from each feature
+        array.forEach(features, function(feature) {
+          rasterLayer = featureToRasterLayer(feature);
+          if (rasterLayer) {
+            _this.rasterLayers.push(rasterLayer);
+          }
+        });
+
+      }
+      return _this.rasterLayers;
     },
 
     // create a new model with the default colormap

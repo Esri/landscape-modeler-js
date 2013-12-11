@@ -1,0 +1,346 @@
+{
+  "objectIdFieldName": "OBJECTID",
+  "fields": [{
+    "name": "OBJECTID",
+    "type": "esriFieldTypeOID",
+    "alias": "OBJECTID",
+    "domain": null
+  }, {
+    "name": "Name",
+    "type": "esriFieldTypeString",
+    "alias": "Name",
+    "domain": null,
+    "length": 50
+  }, {
+    "name": "Title",
+    "type": "esriFieldTypeString",
+    "alias": "Title",
+    "domain": null,
+    "length": 50
+  }, {
+    "name": "Url",
+    "type": "esriFieldTypeString",
+    "alias": "Url",
+    "domain": null,
+    "length": 1024
+  }, {
+    "name": "InputRanges",
+    "type": "esriFieldTypeString",
+    "alias": "InputRanges",
+    "domain": null,
+    "length": 256
+  }, {
+    "name": "OutputValues",
+    "type": "esriFieldTypeString",
+    "alias": "OutputValues",
+    "domain": null,
+    "length": 256
+  }, {
+    "name": "NoDataRanges",
+    "type": "esriFieldTypeString",
+    "alias": "NoDataRanges",
+    "domain": null,
+    "length": 256
+  }, {
+    "name": "RangeLabels",
+    "type": "esriFieldTypeString",
+    "alias": "RangeLabels",
+    "domain": null,
+    "length": 256
+  }, {
+    "name": "NoDataRangeLabels",
+    "type": "esriFieldTypeString",
+    "alias": "NoDataRangeLabels",
+    "domain": null,
+    "length": 1024
+  }],
+  "features": [{
+    "attributes": {
+      "OBJECTID": 32,
+      "Name": "LndOwn_BLM_US_PADUS_2011_PA",
+      "Title": "BLM Lands",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_BLM_Lands/ImageServer",
+      "InputRanges": "1,1",
+      "OutputValues": "5",
+      "NoDataRanges": "0,0",
+      "RangeLabels": "BLM Land",
+      "NoDataRangeLabels": "Non-BLM Land"
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 33,
+      "Name": "LndOwn_Fed_US_PADUS_2011_PA",
+      "Title": "Federal Lands",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_All_Federal_Lands/ImageServer",
+      "InputRanges": "1,1",
+      "OutputValues": "5",
+      "NoDataRanges": "0,0",
+      "RangeLabels": "Federal Land",
+      "NoDataRangeLabels": "Non-Federal Land"
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 34,
+      "Name": "LndOwn_FS_US_PADUS_2011_PA",
+      "Title": "USFS Lands",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_USFS_Lands/ImageServer",
+      "InputRanges": "1,1",
+      "OutputValues": "5",
+      "NoDataRanges": "0,0",
+      "RangeLabels": "USFS Land",
+      "NoDataRangeLabels": "Non-USFS Land"
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 35,
+      "Name": "LndOwn_FWS_US_PADUS_2011_PA",
+      "Title": "USFWS Lands",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_USFWS_Lands/ImageServer",
+      "InputRanges": "1,1",
+      "OutputValues": "5",
+      "NoDataRanges": "0,0",
+      "RangeLabels": "USFWS Lands",
+      "NoDataRangeLabels": "Non-USFWS Lands"
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 36,
+      "Name": "LndOwn_NPS_US_PADUS_2011_PA",
+      "Title": "NPS Lands",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_NPS_Lands/ImageServer",
+      "InputRanges": "1,1",
+      "OutputValues": "5",
+      "NoDataRanges": "0,0",
+      "RangeLabels": "NPS Lands",
+      "NoDataRangeLabels": "Non-NPS Lands"
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 37,
+      "Name": "LndOwn_Ntv_US_PADUS_2011_PA",
+      "Title": "Native American Lands",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_Native_American_Lands/ImageServer",
+      "InputRanges": "1,1",
+      "OutputValues": "5",
+      "NoDataRanges": "0,0",
+      "RangeLabels": "Native American Lands",
+      "NoDataRangeLabels": "Non-Native American Lands"
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 38,
+      "Name": "LndOwn_Wild_US_PADUS_2011_PA",
+      "Title": "Wilderness Areas",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_Wilderness_Areas/ImageServer",
+      "InputRanges": "1,1",
+      "OutputValues": "5",
+      "NoDataRanges": "0,0",
+      "RangeLabels": "Wilderness",
+      "NoDataRangeLabels": "Non-Wilderness"
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 39,
+      "Name": "Soil_MapUnit_US_SSURGO_2010_WtrTblDpthAnnMin",
+      "Title": "Soils Water Table Depth",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_Soils_Water_Table_Depth/ImageServer",
+      "InputRanges": "0,55,55,110,110,165,165,230,230,281",
+      "OutputValues": "1,3,5,7,9",
+      "NoDataRanges": null,
+      "RangeLabels": "Very Shallow,Shallow,Medium,Deep,Very Deep",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 43,
+      "Name": "Soil_MapUnit_US_SSURGO_2010_AvailWtrStorWA_8bit",
+      "Title": "Soils Available Water Storage",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_Soils_Available_Water_Storage/ImageServer",
+      "InputRanges": "0,20,20,35,35,70,50,70,70,85",
+      "OutputValues": "1,3,5,7,9",
+      "NoDataRanges": null,
+      "RangeLabels": "Very Low,Low,Medium,High,Very High",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 44,
+      "Name": "FloodRsk_US_FEMA_2011_PA",
+      "Title": "Flood Risk",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_Flood_Risk/ImageServer",
+      "InputRanges": "1,1",
+      "OutputValues": "5",
+      "NoDataRanges": "0,0",
+      "RangeLabels": "In 100-yr Flood Plain",
+      "NoDataRangeLabels": "Not In 100-yr Flood Plain"
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 45,
+      "Name": "LndForm_US_USGS_Class",
+      "Title": "Land Surface Forms",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_Land_Surface_Forms/ImageServer",
+      "InputRanges": "1,4,4,4,5,8,8,10,10,10",
+      "OutputValues": "1,3,5,7,9",
+      "NoDataRanges": null,
+      "RangeLabels": "Plains,Escarpments,Hills,Mountains/Canyons,Drainage Channels",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 47,
+      "Name": "DevelopmentRisk_US_USFS_2007",
+      "Title": "Development Risk",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/USA_Development_Risk/ImageServer",
+      "InputRanges": "0,0,1,1,2,2,3,3,4,4",
+      "OutputValues": "0,1,5,8,9",
+      "NoDataRanges": null,
+      "RangeLabels": "No Risk,Low,Moderate,High,Very High",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 48,
+      "Name": "FirePotential_US_USFS_2013",
+      "Title": "Wildland Fire Potential",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/USA_Fire_Potential/ImageServer",
+      "InputRanges": "1,1,2,2,3,3,4,4,5,5,6,6,7,7",
+      "OutputValues": "1,3,5,7,9,0,0",
+      "NoDataRanges": null,
+      "RangeLabels": "Very Low,Low,Moderate,High,Very High,Non-burnable,Water",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 50,
+      "Name": "InsectDiseaseRisk_US_USDA_2007",
+      "Title": "Insect and Disease Risk",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/USA_Insect_and_Disease_Risk/ImageServer",
+      "InputRanges": "0,36,35,66,65,101",
+      "OutputValues": "1,9,5",
+      "NoDataRanges": null,
+      "RangeLabels": "Low,High,Medium",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 51,
+      "Name": "LndCov_US_GAP_2003",
+      "Title": "Landcover GAP",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/USA_Landcover_GAP/ImageServer",
+      "InputRanges": "549,551,502,507,573,577,1,289,552,557,514,554,577,579,500,507,565,576,460,499,290,459",
+      "OutputValues": "9,3,1,7,6,2,1,4,8,2,4",
+      "NoDataRanges": null,
+      "RangeLabels": "Ag. Veg,Aquatic Veg,Developed,Forest,Introduced Veg,Non/Sparse-Vascular Rock Veg,Open Water,Polar/Montane Veg,Recently Disturbed,Semi-Desert,Shrubland",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 52,
+      "Name": "Rainfall_US_USDA_2000_Inches",
+      "Title": "Average Rainfall Inches",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/USA_Mean_Rainfall/ImageServer",
+      "InputRanges": "2,10,10,20,20,40,40,75,75,283",
+      "OutputValues": "1,2,3,4,5",
+      "NoDataRanges": null,
+      "RangeLabels": "Very Low,Low,Medium,High,Very High",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 53,
+      "Name": "Road_US_TIGER_2011_KM",
+      "Title": "Road Density",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/USA_Roads/ImageServer",
+      "InputRanges": "0,1,1,3,3,5,5,10,10,45",
+      "OutputValues": "9,7,5,3,1",
+      "NoDataRanges": null,
+      "RangeLabels": "Very Low,Low,Medium,High,Very High",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 54,
+      "Name": "Temperature_US_USDA_2000_Celsius",
+      "Title": "Mean Annual Temperature",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/USA_Mean_Temperature/ImageServer",
+      "InputRanges": "-9,0,0,5,5,12,12,20,20,26",
+      "OutputValues": "1,2,3,4,5",
+      "NoDataRanges": null,
+      "RangeLabels": "Very Low,Low,Medium,High,Very High",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 55,
+      "Name": "WildlandUrbanInterface_US_WUI_2008_PA",
+      "Title": "Wildland-Urban Interface",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/USA_Wildland_Urban_Interface/ImageServer",
+      "InputRanges": "1,1,0,0",
+      "OutputValues": "5,0",
+      "NoDataRanges": "",
+      "RangeLabels": "Interface,Noninterface",
+      "NoDataRangeLabels": ""
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 56,
+      "Name": "WoodyBiomass_US_USDA_2008",
+      "Title": "Woody Biomass",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/USA_Woody_Biomass/ImageServer",
+      "InputRanges": "0,66,66,133,133,256",
+      "OutputValues": "1,5,9",
+      "NoDataRanges": null,
+      "RangeLabels": "Low,Medium,High",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 57,
+      "Name": "CONUS_aspect_90m",
+      "Title": "Aspect",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Aspect/ImageServer",
+      "InputRanges": "-1,0,0,22.5,22.5,67.5,67.5,112.5,112.5,157.5,157.5,202.5,202.5,247.5,247.5,292.5,292.5,337.5,337.5,360.5",
+      "OutputValues": "1,2,3,4,5,6,7,8,9,2",
+      "NoDataRanges": null,
+      "RangeLabels": "Flat,NNE,NE,E,SE,S,SW,W,NW,NNW",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 58,
+      "Name": "CONUS_dem_90m",
+      "Title": "Elevation",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Elevation/ImageServer",
+      "InputRanges": "-96,100,100,300,300,800,800,2000,2000,4412",
+      "OutputValues": "1,2,3,4,5",
+      "NoDataRanges": null,
+      "RangeLabels": "Very Low,Low,Medium,High,Very High",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 59,
+      "Name": "CONUS_slope_90m",
+      "Title": "Slope",
+      "Url": "https://landscape3.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Slope/ImageServer",
+      "InputRanges": "0,3,3,8,8,16,16,26,26,82",
+      "OutputValues": "1,2,3,4,5",
+      "NoDataRanges": null,
+      "RangeLabels": "Very Low,Low,Medium,High,Very High",
+      "NoDataRangeLabels": null
+    }
+  }, {
+    "attributes": {
+      "OBJECTID": 60,
+      "Name": "Critical_Habitat",
+      "Title": "Critical Habitat",
+      "Url": "https://landscape2.arcgis.com/arcgis/rest/services/USA_Critical_Habitat/ImageServer",
+      "InputRanges": "1,1",
+      "OutputValues": "5",
+      "NoDataRanges": "0,0",
+      "RangeLabels": "Critical Habitat",
+      "NoDataRangeLabels": "Noncritical Habitat"
+    }
+  }]
+}
