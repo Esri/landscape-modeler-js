@@ -1,0 +1,17 @@
+{
+  "globals": {
+      /* jasmine */
+      "jasmine": true,
+      "spyOn": true,
+      "it": true,
+      "console": true,
+      "describe": true,
+      "expect": true,
+      "beforeEach": true,
+      "afterEach": true,
+      "waits": true,
+      "waitsFor": true,
+      "runs": true,
+      "xit": true
+  }
+}

@@ -7,8 +7,7 @@ define([
     weightedOverlayService: {
       // image service that publishes all available raster layers
       // and the raster functions that operate on them
-      // url: "http://ec2-54-243-84-65.compute-1.amazonaws.com/arcgis/rest/services/landscapeModeler/weightedOverlay/ImageServer",
-      url: "/arcgis/rest/services/landscapeModeler/weightedOverlay/ImageServer",
+      url: "/base/test/data/arcgis/rest/services/Landscape_Modeler/USA_Weighted_Overlay/ImageServer",
       // options for initializing the model service
       options: {
         rasterFunctionName: "WeightedOverlay_7_1_9_colormap",

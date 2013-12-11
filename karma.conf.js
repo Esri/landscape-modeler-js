@@ -3,17 +3,22 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: '',
 
-    frameworks: ['jasmine', 'dojo'],
+    frameworks: ['mocha', 'chai', 'dojo'],
 
     // list of files / patterns to load in the browser
     files: [
       'test/spec/main.js',
 
-      // all the sources, tests
+      // all the sources, tests, data
       {pattern: 'src/lib/weighted-overlay-modeler/*.js', included: false},
-      {pattern: 'test/spec/*.js', included: false}
+      {pattern: 'test/spec/*.js', included: false},
+      {pattern: 'test/data/*.json', included: false},
+      {pattern: 'test/data/arcgis/**/*', included: false}
     ],
 
+    // list of files to exclude
+    // exclude: [
+    // ],
 
     // test results reporter to use
     // possible values: dots || progress
@@ -25,9 +30,9 @@ module.exports = function(config) {
 
 
     // proxy for cross domain requests
-    proxies:  {
-      '/arcgis': 'http://landscapemodelerdev.arcgis.com/arcgis'
-    },
+    // proxies:  {
+    //   '/arcgis/': 'https://landscape3.arcgis.com/arcgis/'
+    // },
 
 
     // cli runner port
@@ -62,7 +67,8 @@ module.exports = function(config) {
 
     plugins: [
       'karma-dojo',
-      'karma-jasmine',
+      'karma-mocha',
+      'karma-chai',
       'karma-chrome-launcher',
       'karma-firefox-launcher'
     ]
