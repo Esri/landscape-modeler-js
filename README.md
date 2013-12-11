@@ -14,18 +14,18 @@ Landscape Modeler is built on top of the [ArcGIS API for JavaScript](https://dev
 ## Features
 
 Landscape Modeler allows any user with a valid [ArcGIS Online](http://www.arcgis.com/) organizational account to:
-* Design weighted overlay models using the [ready-to-use landscape layers on ArcGIS Online](http://esri.maps.arcgis.com/home/group.html?owner=esri&title=Landscape%20Layers)
-* Run those models in real time at a variety of scales and extents
-* Save models as ArcGIS Online web maps that can be loaded into other applications or ArcGIS Desktop
-* Load and view models that have been saved and shared by others
-* Overlay the model with a feature service and see graphs of model results by feature type
+* Design weighted overlay models using the [ready-to-use landscape layers on ArcGIS Online](http://esri.maps.arcgis.com/home/group.html?owner=esri&title=Landscape%20Layers).
+* Run those models in real time at a variety of scales and extents.
+* Save models as ArcGIS Online web maps that can be loaded into other applications or ArcGIS for Desktop.
+* Load and view models that have been saved and shared by others.
+* Overlay the model with a feature service and see graphs of model results by feature type.
 
 ## Development Instructions
 
 1. `git clone https://github.com/Esri/landscape-modeler-js`
 2. `cd landscape-modeler-js`
 3. `npm install` for Grunt/Karma
-4. Configure image service parameters in app/config.js (optional)
+4. Configure image service parameters in app/config.js (optional).
 
 ## Requirements
 
