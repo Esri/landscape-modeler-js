@@ -13,8 +13,8 @@ limitations under the License.
 define([],
 function() {
   // environment variables to be changed by the deployment script
-  var portalUrl = "http://www.arcgis.com";
-  var weightedOverlayServiceUrl = "http://landscapemodeler.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Weighted_Overlay/ImageServer";
+  var portalUrl = "https://www.arcgis.com";
+  var weightedOverlayServiceUrl = "https://landscape3.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Weighted_Overlay/ImageServer";
 
   return {
     // app title
