@@ -18,16 +18,16 @@ var dojoConfig = {
             location:"/base/src/lib/weighted-overlay-modeler"
         }, {
             name: 'esri',
-            location: 'http://js.arcgis.com/3.7/js/esri'
+            location: 'http://js.arcgis.com/3.8/js/esri'
         }, {
             name: 'dojo',
-            location: 'http://js.arcgis.com/3.7/js/dojo/dojo'
+            location: 'http://js.arcgis.com/3.8/js/dojo/dojo'
         }, {
             name: 'dojox',
-            location: 'http://js.arcgis.com/3.7/js/dojo/dojox'
+            location: 'http://js.arcgis.com/3.8/js/dojo/dojox'
         }, {
             name: 'dijit',
-            location: 'http://js.arcgis.com/3.7/js/dojo/dijit'
+            location: 'http://js.arcgis.com/3.8/js/dojo/dijit'
         }
     ],
     async: true
