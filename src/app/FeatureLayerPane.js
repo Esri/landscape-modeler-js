@@ -17,6 +17,7 @@ define([
   "dojo/on",
   "dojo/Evented",
   "dojo/dom-construct",
+  "dojo/topic",
 
   "dijit/_WidgetBase",
   "dijit/_TemplatedMixin",
@@ -41,7 +42,7 @@ define([
   "dojox/validate/regexp"
 
 ], function (
-  declare, lang, array, on, Evented, domConstruct,
+  declare, lang, array, on, Evented, domConstruct, topic,
   _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
   FeatureLayer, Legend, Editor, TemplatePicker,
   AreaBreakdown,
@@ -86,6 +87,12 @@ define([
       }));
       this.own(on(this.transparencyNode, "Change", function() {
         _this.setTransparency(this.value);
+      }));
+      // when model is cleared, remove charts
+      this.own(topic.subscribe(this.config.topics.MODELER_MODEL_UPDATED, function (sender, args) {
+        if (!(args && args.model && args.model.overlayLayers && args.model.overlayLayers.length > 0)) {
+          _this._destroyChartControls();
+        }
       }));
     },
     setVisibility: function(visible) {
@@ -177,6 +184,9 @@ define([
         this.templatePicker.destroy();
         this.templatePicker = null;
       }
+      this._destroyChartControls();
+    },
+    _destroyChartControls: function() {
       if (this.chartPane) {
         this.chartPane.destroy();
         this.chartPane = null;

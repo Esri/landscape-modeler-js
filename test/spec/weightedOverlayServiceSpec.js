@@ -17,6 +17,183 @@ define([
   config
 ) {
   var weightedOverlayService;
+  var VALID_MODEL = {
+    overlayLayers: [
+      {
+        weight: 25,
+        name: "critHab",
+        title: "Critical Habitat",
+        id: 1,
+        url: "http://ec2-54-243-84-56.compute-1.amazonaws.com/arcgis/rest/services/Critical_Habitat/ImageServer",
+        remapRanges: [
+          {
+            label: "Non Critical",
+            inputMin: 0,
+            inputMax: 0,
+            outputValue: 1
+          },
+          {
+            label: "Threatened",
+            inputMin: 5,
+            inputMax: 5,
+            outputValue: 5
+          },
+          {
+            label: "Endangered",
+            inputMin: 10,
+            inputMax: 10,
+            outputValue: 9
+          }
+        ]
+      }, {
+        weight: 25,
+        name: "devRisk",
+        title: "Development Risk",
+        id: 2,
+        url: "http://ec2-54-243-84-56.compute-1.amazonaws.com/arcgis/rest/services/Development_Risk/ImageServer",
+        remapRanges: [
+          {
+            label: "None",
+            inputMin: 0,
+            inputMax: 0,
+            outputValue: 0
+          },
+          {
+            label: "Low",
+            inputMin: 1,
+            inputMax: 1,
+            outputValue: 1
+          },
+          {
+            label: "Moderate",
+            inputMin: 2,
+            inputMax: 2,
+            outputValue: 5
+          },
+          {
+            label: "High",
+            inputMin: 3,
+            inputMax: 3,
+            outputValue: 8
+          },
+          {
+            label: "Very High",
+            inputMin: 4,
+            inputMax: 4,
+            outputValue: 9
+          }
+        ]
+      }, {
+        weight: 25,
+        name: "roads",
+        title: "Road Density",
+        id: 14,
+        url: "http://ec2-54-243-84-56.compute-1.amazonaws.com/arcgis/rest/services/Road_Density/ImageServer",
+        remapRanges: [
+          {
+            label: "Very Low",
+            inputMin: 0,
+            inputMax: 1,
+            outputValue: 9
+          },
+          {
+            label: "Low",
+            inputMin: 1,
+            inputMax: 3,
+            outputValue: 7
+          },
+          {
+            label: "Medium",
+            inputMin: 3,
+            inputMax: 5,
+            outputValue: 5
+          },
+          {
+            label: "High",
+            inputMin: 5,
+            inputMax: 10,
+            outputValue: 3
+          },
+          {
+            label: "Very High",
+            inputMin: 10,
+            inputMax: 45,
+            outputValue: 1
+          }
+        ]
+      }, {
+        weight: 25,
+        name: "nlcd",
+        title: "Land Cover",
+        id: 32,
+        url: "http://ec2-54-243-84-56.compute-1.amazonaws.com/arcgis/rest/services/NLCD_landcover/ImageServer",
+        remapRanges: [
+          {
+            label: "Water",
+            inputMin: 11,
+            inputMax: 12,
+            outputValue: 0
+          },
+          {
+            label: "Ice",
+            inputMin: 12,
+            inputMax: 13,
+            outputValue: 0
+          },
+          {
+            label: "Development",
+            inputMin: 21,
+            inputMax: 25,
+            outputValue: 1
+          },
+          {
+            label: "Barren",
+            inputMin: 31,
+            inputMax: 32,
+            outputValue: 1
+          },
+          {
+            label: "Forest",
+            inputMin: 41,
+            inputMax: 44,
+            outputValue: 9
+          },
+          {
+            label: "Shrub/Scrub/Grassland",
+            inputMin: 52,
+            inputMax: 72,
+            outputValue: 7
+          },
+          {
+            label: "Agriculture",
+            inputMin: 81,
+            inputMax: 83,
+            outputValue: 3
+          },
+          {
+            label: "Wetland",
+            inputMin: 90,
+            inputMax: 96,
+            outputValue: 5
+          }
+        ],
+      }
+    ],
+    colormapDefinition: {
+      name: "1_9_red_yellow_green",
+      colors: [
+        {label: "Extremely Low", value: 1, rgb: [230,0,0]},
+        {label: "Very Low", value: 2, rgb: [242,85,0]},
+        {label: "Low", value: 3, rgb: [250,142,0]},
+        {label: "Low Medium", value: 4, rgb: [255,195,0]},
+        {label: "Medium", value: 5, rgb: [255,255,0]},
+        {label: "High Medium", value: 6, rgb: [197,219,0]},
+        {label: "High", value: 7, rgb: [39,181,0]},
+        {label: "Very High", value: 8, rgb: [86,148,0]},
+        {label: "Extremely High", value: 9, rgb: [38,115,0]}
+      ]
+    }
+  };
   // utility functions
   function getImageServiceLayer(configSettings) {
     return new ArcGISImageServiceLayer(configSettings.url);
@@ -457,183 +634,7 @@ define([
   describe("When validating a model", function() {
     var validModel;
     beforeEach(function() {
-      validModel = {
-        overlayLayers: [
-          {
-            weight: 25,
-            name: "critHab",
-            title: "Critical Habitat",
-            id: 1,
-            url: "http://ec2-54-243-84-56.compute-1.amazonaws.com/arcgis/rest/services/Critical_Habitat/ImageServer",
-            remapRanges: [
-              {
-                label: "Non Critical",
-                inputMin: 0,
-                inputMax: 0,
-                outputValue: 1
-              },
-              {
-                label: "Threatened",
-                inputMin: 5,
-                inputMax: 5,
-                outputValue: 5
-              },
-              {
-                label: "Endangered",
-                inputMin: 10,
-                inputMax: 10,
-                outputValue: 9
-              }
-            ]
-          }, {
-            weight: 25,
-            name: "devRisk",
-            title: "Development Risk",
-            id: 2,
-            url: "http://ec2-54-243-84-56.compute-1.amazonaws.com/arcgis/rest/services/Development_Risk/ImageServer",
-            remapRanges: [
-              {
-                label: "None",
-                inputMin: 0,
-                inputMax: 0,
-                outputValue: 0
-              },
-              {
-                label: "Low",
-                inputMin: 1,
-                inputMax: 1,
-                outputValue: 1
-              },
-              {
-                label: "Moderate",
-                inputMin: 2,
-                inputMax: 2,
-                outputValue: 5
-              },
-              {
-                label: "High",
-                inputMin: 3,
-                inputMax: 3,
-                outputValue: 8
-              },
-              {
-                label: "Very High",
-                inputMin: 4,
-                inputMax: 4,
-                outputValue: 9
-              }
-            ]
-          }, {
-            weight: 25,
-            name: "roads",
-            title: "Road Density",
-            id: 14,
-            url: "http://ec2-54-243-84-56.compute-1.amazonaws.com/arcgis/rest/services/Road_Density/ImageServer",
-            remapRanges: [
-              {
-                label: "Very Low",
-                inputMin: 0,
-                inputMax: 1,
-                outputValue: 9
-              },
-              {
-                label: "Low",
-                inputMin: 1,
-                inputMax: 3,
-                outputValue: 7
-              },
-              {
-                label: "Medium",
-                inputMin: 3,
-                inputMax: 5,
-                outputValue: 5
-              },
-              {
-                label: "High",
-                inputMin: 5,
-                inputMax: 10,
-                outputValue: 3
-              },
-              {
-                label: "Very High",
-                inputMin: 10,
-                inputMax: 45,
-                outputValue: 1
-              }
-            ]
-          }, {
-            weight: 25,
-            name: "nlcd",
-            title: "Land Cover",
-            id: 32,
-            url: "http://ec2-54-243-84-56.compute-1.amazonaws.com/arcgis/rest/services/NLCD_landcover/ImageServer",
-            remapRanges: [
-              {
-                label: "Water",
-                inputMin: 11,
-                inputMax: 12,
-                outputValue: 0
-              },
-              {
-                label: "Ice",
-                inputMin: 12,
-                inputMax: 13,
-                outputValue: 0
-              },
-              {
-                label: "Development",
-                inputMin: 21,
-                inputMax: 25,
-                outputValue: 1
-              },
-              {
-                label: "Barren",
-                inputMin: 31,
-                inputMax: 32,
-                outputValue: 1
-              },
-              {
-                label: "Forest",
-                inputMin: 41,
-                inputMax: 44,
-                outputValue: 9
-              },
-              {
-                label: "Shrub/Scrub/Grassland",
-                inputMin: 52,
-                inputMax: 72,
-                outputValue: 7
-              },
-              {
-                label: "Agriculture",
-                inputMin: 81,
-                inputMax: 83,
-                outputValue: 3
-              },
-              {
-                label: "Wetland",
-                inputMin: 90,
-                inputMax: 96,
-                outputValue: 5
-              }
-            ],
-          }
-        ],
-        colormapDefinition: {
-          name: "1_9_red_yellow_green",
-          colors: [
-            {label: "Extremely Low", value: 1, rgb: [230,0,0]},
-            {label: "Very Low", value: 2, rgb: [242,85,0]},
-            {label: "Low", value: 3, rgb: [250,142,0]},
-            {label: "Low Medium", value: 4, rgb: [255,195,0]},
-            {label: "Medium", value: 5, rgb: [255,255,0]},
-            {label: "High Medium", value: 6, rgb: [197,219,0]},
-            {label: "High", value: 7, rgb: [39,181,0]},
-            {label: "Very High", value: 8, rgb: [86,148,0]},
-            {label: "Extremely High", value: 9, rgb: [38,115,0]}
-          ]
-        }
-      };
+      validModel = lang.clone(VALID_MODEL);
     });
     weightedOverlayService = new WeightedOverlayService(getImageServiceLayer(config.weightedOverlayService), config.weightedOverlayService.options);
 
@@ -843,6 +844,24 @@ define([
           });
         }
       });
+    });
+  });
+
+  describe("when clearing model", function() {
+    // init WO image service
+    before(function() {
+      weightedOverlayService = new WeightedOverlayService(getImageServiceLayer(config.weightedOverlayService), config.weightedOverlayService.options);
+    });
+    it("should remove the image service layer's rendering rule", function() {
+      // apply a model
+      weightedOverlayService.runModel(VALID_MODEL);
+      expect(weightedOverlayService.imageServiceLayer.renderingRule).to.not.be.a("null");
+      weightedOverlayService.clearModel();
+      expect(weightedOverlayService.imageServiceLayer.renderingRule).to.be.a("null");
+    });
+    it("should not error when no image service layer", function() {
+      weightedOverlayService.clearModel();
+      expect(weightedOverlayService.imageServiceLayer.renderingRule).to.be.a("null");
     });
   });
 

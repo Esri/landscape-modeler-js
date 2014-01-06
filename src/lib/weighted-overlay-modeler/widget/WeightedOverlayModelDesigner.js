@@ -128,6 +128,20 @@ function(
       this.runModel();
     },
 
+    _onClearClick: function() {
+      this.clearModel();
+    },
+
+    // load a new, empty model
+    // hide the model layer
+    // disable the model visibility checkbox
+    // clear the model from the service
+    // emit an event
+    clearModel: function() {
+      this.setModel(this.weightedOverlayService.createNewModel());
+      this.emit("model-clear", this.model);
+    },
+
     // replace existing layer editors with
     // new ones for the each layer
     // update colormap definition
@@ -135,18 +149,27 @@ function(
       var _this = this;
       this.model = newModel;
       containerUtils.removeChildren(this);
-      array.forEach(this.model.overlayLayers, function(layer) {
-        var layerEditor = new WeightedOverlayLayerEditor({
-          overlayLayer: layer
+      if (this.model.overlayLayers && this.model.overlayLayers.length && this.model.overlayLayers.length > 0) {
+        array.forEach(this.model.overlayLayers, function(layer) {
+          var layerEditor = new WeightedOverlayLayerEditor({
+            overlayLayer: layer
+          });
+          _this.own(on(layerEditor, "WeightChange", function() {
+            _this.validate();
+          }));
+          layerEditor.startup();
+          _this.addChild(layerEditor);
         });
-        _this.own(on(layerEditor, "WeightChange", function() {
-          _this.validate();
-        }));
-        layerEditor.startup();
-        _this.addChild(layerEditor);
-      });
+      } else {
+        // no layers
+        this.hideModelLayer();
+        this.visibleModelNode.set("disabled", true);
+        this.weightedOverlayService.clearModel();
+      }
       this.validate();
-      this.colormap.set("definition", this.model.colormapDefinition);
+      if (this.model.colormapDefinition) {
+        this.colormap.set("definition", this.model.colormapDefinition);
+      }
     },
 
     // sum up raster weights and show total
@@ -172,12 +195,16 @@ function(
 
     // validate the form
     // run the model
+    // enable the model visibility checkbox
+    // show the model layer
+    // emit an event
     runModel: function(model) {
       // validate the model
       this.validate();
       if (this._isValid) {
         // TODO: IMPORTANT! wrap in try catch, show model validation errors if any
         this.weightedOverlayService.runModel(this.model);
+        this.visibleModelNode.set("disabled", false);
         this.showModelLayer();
         this.emit("model-run", this.model);
       }
@@ -186,6 +213,11 @@ function(
     // check visible checkbox and show layer
     showModelLayer: function() {
       this.visibleModelNode.set('checked', true);
+    },
+
+    // uncheck visible checkbox and hide layer
+    hideModelLayer: function() {
+      this.visibleModelNode.set('checked', false);
     }
   });
 });

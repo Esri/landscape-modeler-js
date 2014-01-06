@@ -688,6 +688,13 @@ function(
       }
     },
 
+    // clear the applied raster function (if any)
+    clearModel: function() {
+      if (this.imageServiceLayer && this.imageServiceLayer.renderingRule !== null) {
+        this.imageServiceLayer.setRenderingRule(null);
+      }
+    },
+
     // generate a raster function from model parameters
     // and then apply it to a histogram of pixels
     // within a geometry
