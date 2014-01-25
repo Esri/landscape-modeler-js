@@ -140,9 +140,35 @@ function (
         // hide the preview layer
         // notify the rest of the app
       this.own(on(this.designModelView, "model-run", function(model) {
+        _this.weightedOverlayModel = model;
         _this.portalControls.set("model", model);
         _this.selectLayersView.hidePreviewLayer();
-        topic.publish(_this.config.topics.MODELER_MODEL_RUN, _this, model);
+        topic.publish(_this.config.topics.MODELER_MODEL_UPDATED, _this, {
+          model: model
+        });
+      }));
+
+      // when a model is cleared
+        // disable saving of model
+        // clear model title/description
+        // update selected layers
+        // notify the rest of the app
+      this.own(on(this.designModelView, "model-clear", function(model) {
+        var modelItem;
+        _this.weightedOverlayModel = model;
+        if (_this.portalControls) {
+          _this.portalControls.set("model", null);
+          modelItem = _this.portalControls.modelItem;
+          if (modelItem) {
+            modelItem.title = "";
+            modelItem.description = "";
+            _this.portalControls.set("modelItem", modelItem);
+          }
+        }
+        _this.selectLayersView.set("model", model);
+        topic.publish(_this.config.topics.MODELER_MODEL_UPDATED, _this, {
+          model: model
+        });
       }));
 
       // adding model layer to the map
@@ -180,7 +206,6 @@ function (
     // show select layers view
     showDesignModelView: function() {
       // update design view's model
-      // TODO: is this needed?
       this.designModelView.set("model", this.weightedOverlayModel);
       domUtils.hide(this.selectLayersViewNode);
       domUtils.show(this.designModelViewNode);

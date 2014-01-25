@@ -334,8 +334,8 @@ function() {
 
     // app topics
     topics: {
-      MODELER_MODEL_RUN: "/modeler/model/run",
-      MODELER_SIGNOUT: "/modeler/signOut",
+      MODELER_MODEL_UPDATED: "/modeler/model/updated",
+      MODELER_SIGNOUT: "/modeler/signout",
       CHART_FEATURETYPE_SELECTED: "/chart/featureType/selected"
     },
 
