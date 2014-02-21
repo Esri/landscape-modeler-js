@@ -59,7 +59,7 @@ module.exports = function(config) {
     // - Opera
     // - Safari
     // - PhantomJS
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'IE'],
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
@@ -70,7 +70,8 @@ module.exports = function(config) {
       'karma-mocha',
       'karma-chai',
       'karma-chrome-launcher',
-      'karma-firefox-launcher'
+      'karma-firefox-launcher',
+      'karma-ie-launcher'
     ]
   });
 };
