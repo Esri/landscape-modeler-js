@@ -340,7 +340,7 @@ function() {
     },
 
     // help link
-    helpUrl: "http://resources.arcgis.com/en/help/landscape-modeler/",
+    helpUrl: 'http://resources.arcgis.com/en/help/landscape-modeler/guide/',
 
     // proxy and utility urls
     proxyUrl: "./proxy.ashx",
