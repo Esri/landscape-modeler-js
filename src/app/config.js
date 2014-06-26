@@ -12,13 +12,15 @@ limitations under the License.
 */
 define([],
 function() {
-  // environment variables to be changed by the deployment script
+  // environment variables to be changed by
+  // Esri's internal deployment script
   var portalUrl = "https://www.arcgis.com";
   var weightedOverlayServiceUrl = "https://landscape3.arcgis.com/arcgis/rest/services/Landscape_Modeler/USA_Weighted_Overlay/ImageServer";
 
   return {
-    // app title
+    // app options
     appTitle: "Landscape Modeler",
+    helpUrl: 'http://resources.arcgis.com/en/help/landscape-modeler/guide/',
 
     // oAuth
     oauthOptions: {
@@ -35,7 +37,11 @@ function() {
       modelItem: {
         title: "New Model"
       },
+      // This is used to filter model items saved by this application.
+      // This *must* be set to something other than 'Landscape Modeler'
+      // if you are using a different weighted overlay image service.
       typeKeyword: "Landscape Modeler",
+      // the list of available tags when saving
       categoryTags: ['Earth & Atmosphere', 'Boundaries', 'Resources & Infrastructure',
                 'Plants & Animals', 'People & Places', 'Environmental Threats  & Hazards']
     },
@@ -57,6 +63,10 @@ function() {
       conversionFactor: 0.000247105 // = 1 sq meter
     },
 
+    // proxy and utility urls
+    proxyUrl: "./proxy.ashx",
+    geometryServiceUrl: "http://utility.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer",
+
     // weighted overlay modeler
     weightedOverlayService: {
       // image service that publishes all available raster layers
@@ -64,13 +74,23 @@ function() {
       url: weightedOverlayServiceUrl,
       // options for initializing the model service
       options: {
+        // these are the names of the raster functions
+        // that are published with the above service
         rasterFunctionName: "WeightedOverlay_7_1_9_colormap",
         histogramRasterFunctionName: "WeightedOverlay_7_0_9_histogram",
+        // the maximum number of rasters allowed by the above functions
         rastersInFunction: 7,
+        // This should be the OBJECT ID of a raster
+        // that is continuous for the entire extent of the service
+        // (i.e. does not have any NoData cells)
         dummyRasterId: 53,
+        // Use these to limit the raster attribute data
+        // that is exposed to the service
         queryParameters: {
           // NOTE: exclude Forest Fagmentation until data issue is corrected
           where: "OBJECTID <> 49",
+          // Must either be set to `['*']` or at least include:
+          // "OBJECTID","Name","Title","Url","InputRanges","OutputValues","NoDataRanges","RangeLabels","NoDataRangeLabels"
           outFields: ["OBJECTID","Name","Title","Url","InputRanges","OutputValues","NoDataRanges","RangeLabels","NoDataRangeLabels"]
         },
         colorMapArgName: "Colormap",
@@ -332,18 +352,12 @@ function() {
       }
     },
 
-    // app topics
+    // app topics - there should not be a need to change these
+    // unless there is a dojo/topic namespace conflict
     topics: {
       MODELER_MODEL_UPDATED: "/modeler/model/updated",
       MODELER_SIGNOUT: "/modeler/signout",
       CHART_FEATURETYPE_SELECTED: "/chart/featureType/selected"
-    },
-
-    // help link
-    helpUrl: 'http://resources.arcgis.com/en/help/landscape-modeler/guide/',
-
-    // proxy and utility urls
-    proxyUrl: "./proxy.ashx",
-    geometryServiceUrl: "http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
+    }
   };
 });
