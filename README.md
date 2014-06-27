@@ -42,11 +42,12 @@ Once you have an image service that exposes the weighted overlay functions, and 
 |-------|--------|-----------|
 |`oauthOptions`|`portal`|Url to the portal (ArcGIS Online, Organization, etc) where the application is registered|
 |`oauthOptions`|`appId`|App ID created in step 2 above|
+|`portalOptions`|`typeKeyword`|This is used to filter model items saved by this application. This *must* be set to something other than 'Landscape Modeler' if you are using a different weighted overlay image service.|
 |`weightedOverlayService`|`url`|URL to the image service that exposes the mosaic data and raster functions|
 |`weightedOverlayService`|`rasterFunctionName`|Name of raster function that perfoms weighted overlay calculation|
 |`weightedOverlayService`|`histogramRasterFunctionName`|Name of raster function that perfoms weighted overlay calculation on histograms for charts|
 |`weightedOverlayService`|`rastersInFunction`|The maximum number of rasters the raster functions can operate on|
-|`weightedOverlayService`|`dummyRasterId`|This should be the OBJECT ID of a raster that is continuous for the entire extent you data set (i.e. does not have any NODATA cells)|
+|`weightedOverlayService`|`dummyRasterId`|This should be the OBJECT ID of a raster that is continuous for the entire extent you data set (i.e. does not have any NoData cells)|
 |`weightedOverlayService`|`queryParameters.where`|An expression to limit the rasters that are exposed to the app|
 |`weightedOverlayService`|`queryParameters.outFields`|An array of mosaic attribute table field names that are exposed to the app. Must either be set to `['*']` or at least include the [required fields](http://resources.arcgis.com/en/help/landscape-modeler/prepare-data/index.html#//03sm00000003000000#ESRI_SECTION1_01C8A5D037FD448C80E4467D3EB6B5CA)|
 
@@ -85,7 +86,7 @@ Esri welcomes contributions from anyone and everyone. Please see our [guidelines
 
 ## Credit
 
-Landscape Modeler was developed along with the [GeoPlanner for ArcGIS](http://www.esri.com/software/geoplanner-for-arcgis) application by a team comprised of members from both the [ArcGIS Content](http://www.esri.com/data/find-data) and [Professional Services](http://www.esri.com/services/professional-services) divisions at Esri.
+Landscape Modeler was developed along with [GeoPlanner for ArcGIS](http://www.esri.com/software/geoplanner-for-arcgis) by a team comprised of members from both the [ArcGIS Content](http://www.esri.com/data/find-data) and [Professional Services](http://www.esri.com/services/professional-services) divisions at Esri.
 
 Landscape Modeler is based on work done by the [Esri Application Prototypes Lab](https://maps.esri.com/demo/) and the [Esri Imagery Team](http://resources.arcgis.com/en/communities/imagery/) to create applications that perform fast weighted overlay analysis by leveraging ArcGIS Server image service raster functions.
 

@@ -57,7 +57,7 @@ define([
         return newModelItem.type === supportedType;
       })) {
         this.modelItem = newModelItem;
-        this.titleNode.innerHTML = this.modelItem.title || "";
+        this.setTitle(this.modelItem.title, this.modelItem.id);
       } else {
         throw "Expected one of these item types: " + supportedItemTypes;
       }
@@ -238,6 +238,16 @@ define([
 
     getTitle: function() {
       return this.titleNode.innerHTML;
+    },
+
+    // Ex: 
+    // http://www.arcgis.com/home/item.html?id=d5e02a0c1f2b4ec399823fdd3c2fdebd
+    setTitle: function(title, id) {
+      var html = title || "";
+      if (id) {
+        html = '<a href="' + this.portal.url + '/home/item.html?id=' + id + '" target="_blank">' + html + '</a>';
+      }
+      this.titleNode.innerHTML = html;
     }
   });
 });
