@@ -1,17 +1,13 @@
 # Esri Landscape Modeler
 
-Landscape Modeler is a JavaScript web application that allows users to perform fast weighted overlay analysis. This is ideal when a user wants to test ideas about a suitability or risk analysis model at multiple scales or over a large area.
+Landscape Modeler is a sample JavaScript web application that demonstrates how to perform site suitablility analysis by leveraging the landscape data hosted on ArcGIS Online and the speed of image service raster functions. This is ideal when a users want to test and share their ideas about suitability or risk analysis models at multiple scales or over a large area.
 
 ![Landscape Modeler Screenshot](http://resources.arcgis.com/en/help/landscape-modeler/guide/0321/GUID-D9C6C1DC-4597-4997-B72A-C303D49D3423-web.png)
 
 [View it live](http://landscapemodeler.arcgis.com/)
 
-Landscape Modeler is built on top of the [ArcGIS API for JavaScript](https://developers.arcgis.com/en/javascript/) and ArcGIS Server image services. By default it is configured to use the [ready-to-use landscape layers on ArcGIS Online](http://esri.maps.arcgis.com/home/group.html?owner=esri&title=Landscape%20Layers). However, the [application can be configured](#configuring-the-application) to use other data that is exposed as an image service published with a weighted overlay raster function.
-
-<!-- TODO: add app screenshot -->
-<!--![App](https://raw.github.com/Esri/dojo-bootstrap-ui-for-maps-js/master/dojo-bootstrap-ui-for-maps-js.png)-->
-
-**Currently Esri Landscape Modeler is in development but is open to contributions. It should be thought of as a beta or preview.**
+Landscape Modeler is built on top of the [ArcGIS API for JavaScript](https://developers.arcgis.com/en/javascript/) and ArcGIS Server image services. By default it is configured to use the
+ [ready-to-use landscape layers on ArcGIS Online](http://esri.maps.arcgis.com/home/group.html?owner=esri&title=Landscape%20Layers). However, the [application can be configured](https://github.com/Esri/landscape-modeler-js/wiki/Configuring-the-Application-to-Work-with-Other-Data) to use other data that is exposed as an image service published with a weighted overlay raster function.
 
 ## Features
 
@@ -22,47 +18,32 @@ Landscape Modeler allows any user with a valid [ArcGIS Online](http://www.arcgis
 * Load and view models that have been saved and shared by others.
 * Overlay the model with a feature service and see graphs of model results by feature type.
 
+## Instructions
+
+See the [Landscape Modeler Help](http://resources.arcgis.com/en/help/landscape-modeler/guide/) for instructions on how to use the application.
+
 ## Development Instructions
 
-1. `git clone https://github.com/Esri/landscape-modeler-js`
+1. Fork and clone the repository
 2. `cd landscape-modeler-js`
 3. `npm install` for Grunt/Karma
-4. Configure image service parameters in app/config.js (optional [see below](#configuring-the-application)).
+
+[See the wiki](https://github.com/Esri/landscape-modeler-js/wiki) for instructions on configuring and deploying the application.
 
 ### Configuring the Application
 
-If you wish to deploy the application and configure it to use a different weighted overlay image service, you will first have to follow these steps:
-
-1. [Prepare the data and publishing an image service](http://resources.arcgis.com/en/help/landscape-modeler/prepare-data/)
-2. [Create an item in your portal for the application and register the application to get an app ID](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm#ESRI_SECTION1_55703F1EE9C845C3B07BBD85221FB074)
-
-Once you have an image service that exposes the weighted overlay functions, and an app ID, you will have to change the following values in `src/app/config.js`:
-
-|Section|Variable|Description|
-|-------|--------|-----------|
-|`oauthOptions`|`portal`|Url to the portal (ArcGIS Online, Organization, etc) where the application is registered|
-|`oauthOptions`|`appId`|App ID created in step 2 above|
-|`portalOptions`|`typeKeyword`|This is used to filter model items saved by this application. This *must* be set to something other than 'Landscape Modeler' if you are using a different weighted overlay image service.|
-|`weightedOverlayService`|`url`|URL to the image service that exposes the mosaic data and raster functions|
-|`weightedOverlayService`|`rasterFunctionName`|Name of raster function that perfoms weighted overlay calculation|
-|`weightedOverlayService`|`histogramRasterFunctionName`|Name of raster function that perfoms weighted overlay calculation on histograms for charts|
-|`weightedOverlayService`|`rastersInFunction`|The maximum number of rasters the raster functions can operate on|
-|`weightedOverlayService`|`dummyRasterId`|This should be the OBJECT ID of a raster that is continuous for the entire extent you data set (i.e. does not have any NoData cells)|
-|`weightedOverlayService`|`queryParameters.where`|An expression to limit the rasters that are exposed to the app|
-|`weightedOverlayService`|`queryParameters.outFields`|An array of mosaic attribute table field names that are exposed to the app. Must either be set to `['*']` or at least include the [required fields](http://resources.arcgis.com/en/help/landscape-modeler/prepare-data/index.html#//03sm00000003000000#ESRI_SECTION1_01C8A5D037FD448C80E4467D3EB6B5CA)|
-
-You will likely also need to configure the application title, map center/zoom and area units, and/or colormap definitions to match your data. You may also need to configure the URLs to the proxy page, geometry service, etc to match your environment.
+If you wish to configure the application to use a different weighted overlay image service (i.e. your own data), [see the Configuring the Application to Work with Other Data page of the wiki](https://github.com/Esri/landscape-modeler-js/wiki/Configuring-the-Application-to-Work-with-Other-Data).
 
 ## Requirements
 
-* Must be configured to point to an image service that exposes a weighted overlay raster function
+* Must be configured to point to an image service that exposes weighted overlay raster functions
 * If you plan to host the weighed overlay image service, it must be running on ArcGIS Server v10.2 or greater
 
 ### Dependencies
 
 #### Runtime
 
-* [ArcGIS for JavaScript API](https://developers.arcgis.com/en/javascript/) v3.3 or later
+* [ArcGIS for JavaScript API](https://developers.arcgis.com/en/javascript/) v3.5 or later
 
 #### Development (optional)
 
@@ -71,7 +52,9 @@ You will likely also need to configure the application title, map center/zoom an
 
 ## Resources
 
-* [Landscape Modeler Help](http://resources.arcgis.com/en/help/landscape-modeler/)
+* [Landscape Modeler Help](http://resources.arcgis.com/en/help/landscape-modeler/guide/)
+* [Landscape Mdoeler Wiki](https://github.com/Esri/landscape-modeler-js/wiki)
+* [GeoNet Forum](https://geonet.esri.com/community/gis/applications/geoplanner-for-arcgis)
 * [ArcGIS for JavaScript API](https://developers.arcgis.com/en/javascript/)
 * [ArcGIS REST Services](http://resources.arcgis.com/en/help/arcgis-rest-api/)
 * [@esri](http://twitter.com/esri)
