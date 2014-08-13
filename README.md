@@ -20,9 +20,11 @@ Landscape Modeler allows any user with a valid [ArcGIS Online](http://www.arcgis
 
 ## Instructions
 
+### Using the Application
+
 See the [Landscape Modeler Help](http://resources.arcgis.com/en/help/landscape-modeler/guide/) for instructions on how to use the application.
 
-## Development Instructions
+### Development Instructions
 
 1. Fork and clone the repository
 2. `cd landscape-modeler-js`
@@ -53,11 +55,17 @@ If you wish to configure the application to use a different weighted overlay ima
 ## Resources
 
 * [Landscape Modeler Help](http://resources.arcgis.com/en/help/landscape-modeler/guide/)
-* [Landscape Mdoeler Wiki](https://github.com/Esri/landscape-modeler-js/wiki)
+* [Landscape Modeler Wiki](https://github.com/Esri/landscape-modeler-js/wiki)
 * [GeoNet Forum](https://geonet.esri.com/community/gis/applications/geoplanner-for-arcgis)
 * [ArcGIS for JavaScript API](https://developers.arcgis.com/en/javascript/)
 * [ArcGIS REST Services](http://resources.arcgis.com/en/help/arcgis-rest-api/)
 * [@esri](http://twitter.com/esri)
+
+## Support
+
+If you experience problems configuring the application, carefully review all documentation including the [Landscape Modeler help](http://resources.arcgis.com/en/help/landscape-modeler/guide/) and the [Wiki](https://github.com/Esri/landscape-modeler-js/wiki).
+
+If you still need help, please post questions or comments to the [GeoPlanner for ArcGIS forum](https://geonet.esri.com/community/gis/applications/geoplanner-for-arcgis).
 
 ## Issues
 

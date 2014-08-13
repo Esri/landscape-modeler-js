@@ -1,1 +1,3 @@
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
+
+The [issues](https://github.com/Esri/landscape-modeler-js/issues) is a place for you to report bugs or request feature enhancements. Please post support questions to the [GeoPlanner for ArcGIS forum](https://geonet.esri.com/community/gis/applications/geoplanner-for-arcgis).
