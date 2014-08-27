@@ -1,10 +1,9 @@
 /*!
  *  Gruntfile.js configuration
  */
-
-'use strict';
-
 module.exports = function ( grunt ) {
+
+  var browsers = grunt.option('browsers') ? grunt.option('browsers').split(',') : ['PhantomJS'];
 
     /*
      * Dynamically load the npm tasks
@@ -49,6 +48,29 @@ module.exports = function ( grunt ) {
             options: {
                 jshintrc: ".jshintrc"
             }
+        },
+
+        /* test */
+        karma: {
+          options: {
+            configFile: 'karma.conf.js'
+          },
+          run: {
+            reporters: ['progress'],
+            browsers: browsers
+          },
+          coverage: {
+            reporters: ['progress', 'coverage'],
+            browsers: browsers,
+            preprocessors: {
+              'src/**/*.js': 'coverage'
+            }
+          },
+          watch: {
+            singleRun: false,
+            autoWatch: true,
+            browsers: browsers
+          }
         },
 
         /*
@@ -149,6 +171,7 @@ module.exports = function ( grunt ) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-karma');
     /*
      * Register tasks
      */
@@ -180,5 +203,7 @@ module.exports = function ( grunt ) {
     ]);
 
     grunt.registerTask("hint", ["jshint"]);
+
+    grunt.registerTask("test", ['jshint', 'karma:run']);
 
 };
