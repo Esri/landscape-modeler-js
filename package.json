@@ -14,28 +14,29 @@
     "image service",
     "raster analysis"
   ],
+  "scripts": {
+    "test": "node -e \"require('grunt').tasks(['test']);\""
+  },
   "author": "Tom Wayson <twayson@esri.com> (http://tomwayson.com)",
   "license": "Apache",
   "devDependencies": {
-    "karma-script-launcher": "~0.1.0",
-    "karma-html2js-preprocessor": "~0.1.0",
-    "karma-firefox-launcher": "~0.1.0",
-    "karma-chrome-launcher": "~0.1.0",
-    "karma-jasmine": "~0.1.3",
-    "karma-requirejs": "~0.1.0",
-    "karma-coffee-preprocessor": "~0.1.0",
-    "karma-phantomjs-launcher": "~0.1.0",
-    "karma": "~0.9.8",
-    "karma-dojo": "0.0.1",
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-uglify": "~0.2.4",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-clean": "~0.5.0",
-    "karma-chai": "0.0.2",
-    "mocha": "~1.15.1",
-    "karma-mocha": "~0.1.1",
-    "karma-ie-launcher": "~0.1.1"
+    "grunt": "^0.4.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-jshint": "^0.6.4",
+    "grunt-contrib-uglify": "^0.2.0",
+    "grunt-karma": "^0.8.3",
+    "karma": "^0.12.16",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.3",
+    "karma-coverage": "^0.1",
+    "karma-dojo": "^0.0.1",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-ie-launcher": "^0.1.1",
+    "karma-mocha": "^0.1.0",
+    "karma-mocha-reporter": "^0.2.5",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-safari-launcher": "^0.1.1"
   },
   "readmeFilename": "README.md"
 }

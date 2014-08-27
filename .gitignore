@@ -29,3 +29,6 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+
+# code coverage
+coverage

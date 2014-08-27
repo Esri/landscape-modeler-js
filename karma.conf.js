@@ -22,7 +22,7 @@ module.exports = function(config) {
 
     // test results reporter to use
     // possible values: dots || progress
-    reporters: ['dots'],
+    reporters: ['progress'],
 
 
     // web server port
@@ -58,17 +58,27 @@ module.exports = function(config) {
     // - Firefox
     // - Opera
     // - Safari
-    // - PhantomJS
-    browsers: ['Chrome', 'IE'],
+    // -
+    browsers: ['PhantomJS'],
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false,
+    singleRun: true,
+
+    // Configure the coverage reporters
+    coverageReporter: {
+      reporters:[
+        {type: 'html', dir:'coverage/'},
+        {type: 'text'}
+      ]
+    },
 
     plugins: [
       'karma-dojo',
       'karma-mocha',
       'karma-chai',
+      'karma-coverage',
+      'karma-phantomjs-launcher',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-ie-launcher'
