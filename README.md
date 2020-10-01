@@ -1,9 +1,9 @@
-# Esri Landscape Modeler
+# Esri Landscape Modeler-An Amazing Product
 
 [![Build Status](https://travis-ci.org/Esri/landscape-modeler-js.svg)](https://travis-ci.org/Esri/landscape-modeler-js)
 
 
-Landscape Modeler is a sample JavaScript web application that demonstrates how to perform site suitablility analysis by leveraging the landscape data hosted on ArcGIS Online and the speed of image service raster functions. This is ideal when a users want to test and share their ideas about suitability or risk analysis models at multiple scales or over a large area.
+Landscape Modeler is a sample JavaScript web application that demonstrates how to perform site suitablility analysis by leveraging the landscape data hosted on ArcGIS Online and the speed of image service raster functions. This is ideal when a users want to test and share their ideas about suitability or risk analysis models at multiple scales or over a larger area.
 
 ![Landscape Modeler Screenshot](http://resources.arcgis.com/en/help/landscape-modeler/guide/0321/GUID-D9C6C1DC-4597-4997-B72A-C303D49D3423-web.png)
 
