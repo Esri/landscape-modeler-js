@@ -1,4 +1,4 @@
-# Esri Landscape Modeler-An Amazing Product
+# Esri Landscape Modeler-an amazing product
 
 [![Build Status](https://travis-ci.org/Esri/landscape-modeler-js.svg)](https://travis-ci.org/Esri/landscape-modeler-js)
 
